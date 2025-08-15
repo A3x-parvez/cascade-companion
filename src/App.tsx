@@ -6,6 +6,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+// Tallest pages
+import OverallHeight from "./pages/tallest/OverallHeight";
+import SingleDrop from "./pages/tallest/SingleDrop";
+import FreeFalling from "./pages/tallest/FreeFalling";
+
+// Largest pages
+import AverageWidth from "./pages/largest/AverageWidth";
+import AverageVolume from "./pages/largest/AverageVolume";
+import VolumeNoRapids from "./pages/largest/VolumeNoRapids";
+import VolumeExist from "./pages/largest/VolumeExist";
+
+// Other pages
+import Countries from "./pages/Countries";
+import Blog from "./pages/Blog";
+import Books from "./pages/Books";
+import Contact from "./pages/Contact";
+import Help from "./pages/Help";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -16,6 +34,25 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          
+          {/* Tallest routes */}
+          <Route path="/tallest/overall-height" element={<OverallHeight />} />
+          <Route path="/tallest/single-drop" element={<SingleDrop />} />
+          <Route path="/tallest/free-falling" element={<FreeFalling />} />
+          
+          {/* Largest routes */}
+          <Route path="/largest/average-width" element={<AverageWidth />} />
+          <Route path="/largest/average-volume" element={<AverageVolume />} />
+          <Route path="/largest/volume-no-rapids" element={<VolumeNoRapids />} />
+          <Route path="/largest/volume-exist" element={<VolumeExist />} />
+          
+          {/* Other routes */}
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/help" element={<Help />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
