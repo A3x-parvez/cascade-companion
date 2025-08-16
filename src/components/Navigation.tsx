@@ -1,125 +1,163 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import React from "react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { Waves, ChevronDown, Book, MessageCircle, HelpCircle, TrendingUp, Expand, Globe2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Waves,
+  ChevronDown,
+  Book,
+  MessageCircle,
+  HelpCircle,
+  TrendingUp,
+  Expand,
+  Globe2,
+  Menu,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+
+  const navLinks = [
+    { to: "/tallest/overall-height", label: "Tallest - Overall Height" },
+    { to: "/tallest/single-drop", label: "Tallest - Single Drop" },
+    { to: "/tallest/free-falling", label: "Tallest - Free-falling" },
+    { to: "/largest/average-width", label: "Largest - Average Width" },
+    { to: "/largest/average-volume", label: "Largest - Average Volume" },
+    { to: "/largest/volume-no-rapids", label: "Largest - Volume (no Rapids)" },
+    { to: "/largest/volume-exist", label: "Largest - Volume (still exist)" },
+    { to: "/countries", label: "Browse by Country" },
+    { to: "/blog", label: "Blog" },
+    { to: "/books", label: "Books" },
+    { to: "/contact", label: "Contact" },
+    { to: "/help", label: "Help" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border/10">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 ocean-gradient rounded-lg flex items-center justify-center">
-              <Waves className="w-6 h-6 text-primary-foreground" />
+            <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
+              <Waves className="w-5 h-5 text-primary-foreground" />
             </div>
-            <div>
-              <h1 className="text-lg font-bold text-foreground">Waterfall Explorer</h1>
-              <p className="text-xs text-muted-foreground">Discover Nature's Beauty</p>
-            </div>
+            <h1 className="text-md font-bold text-foreground">Waterfall Explorer</h1>
           </Link>
-          
-          {/* Navigation Links */}
+
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {/* Tallest Dropdown */}
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="hover:bg-accent">
+                <Button variant="ghost" className="hover:bg-accent text-sm h-9">
                   <TrendingUp className="w-4 h-4 mr-2" />
                   Tallest
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg z-50">
+              <DropdownMenuContent className="w-48 bg-card/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
                 <DropdownMenuItem asChild>
-                  <Link to="/tallest/overall-height" className="cursor-pointer">Overall Height</Link>
+                  <Link to="/tallest/overall-height">Overall Height</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/tallest/single-drop" className="cursor-pointer">Tallest Single Drop</Link>
+                  <Link to="/tallest/single-drop">Tallest Single Drop</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/tallest/free-falling" className="cursor-pointer">Free-falling Drops</Link>
+                  <Link to="/tallest/free-falling">Free-falling Drops</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Largest Dropdown */}
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="hover:bg-accent">
+                <Button variant="ghost" className="hover:bg-accent text-sm h-9">
                   <Expand className="w-4 h-4 mr-2" />
                   Largest
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 bg-card border border-border shadow-lg z-50">
+              <DropdownMenuContent className="w-56 bg-card/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
                 <DropdownMenuItem asChild>
-                  <Link to="/largest/average-width" className="cursor-pointer">By Average Width</Link>
+                  <Link to="/largest/average-width">By Average Width</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/largest/average-volume" className="cursor-pointer">By Average Volume</Link>
+                  <Link to="/largest/average-volume">By Average Volume</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/largest/volume-no-rapids" className="cursor-pointer">By Volume (no Rapids)</Link>
+                  <Link to="/largest/volume-no-rapids">By Volume (no Rapids)</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/largest/volume-exist" className="cursor-pointer">By Volume (still exist)</Link>
+                  <Link to="/largest/volume-exist">By Volume (still exist)</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Browse by Country */}
-            <Button variant="ghost" className="hover:bg-accent" asChild>
-              <Link to="/countries">
-                <Globe2 className="w-4 h-4 mr-2" />
-                Browse by Country
-              </Link>
+            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
+              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by Country</Link>
             </Button>
-
-            {/* Blog */}
-            <Button variant="ghost" className="hover:bg-accent" asChild>
-              <Link to="/blog">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Blog
-              </Link>
+            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
+              <Link to="/blog"><MessageCircle className="w-4 h-4 mr-2" />Blog</Link>
             </Button>
-
-            {/* Books */}
-            <Button variant="ghost" className="hover:bg-accent" asChild>
-              <Link to="/books">
-                <Book className="w-4 h-4 mr-2" />
-                Books
-              </Link>
+            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
+              <Link to="/books"><Book className="w-4 h-4 mr-2" />Books</Link>
             </Button>
-
-            {/* Contact */}
-            <Button variant="ghost" className="hover:bg-accent" asChild>
-              <Link to="/contact">
-                Contact
-              </Link>
+            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
+              <Link to="/contact">Contact</Link>
             </Button>
-
-            {/* Help */}
-            <Button variant="ghost" className="hover:bg-accent" asChild>
-              <Link to="/help">
-                <HelpCircle className="w-4 h-4 mr-2" />
-                Help
-              </Link>
+            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
+              <Link to="/help"><HelpCircle className="w-4 h-4 mr-2" />Help</Link>
             </Button>
           </div>
-          
-          {/* Mobile Menu Button */}
+
+          {/* Mobile Menu */}
           <div className="lg:hidden">
-            <Button variant="ghost" size="sm">
-              <ChevronDown className="w-4 h-4" />
-            </Button>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm">
+                  <Menu className="w-5 h-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="left"
+                className="w-72 p-0 border-r border-border/20 bg-background/95 backdrop-blur-lg"
+              >
+                <div className="flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-center gap-2 p-4 border-b border-border/20">
+                    <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
+                      <Waves className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <h2 className="font-semibold text-lg">Waterfall Explorer</h2>
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex-1 overflow-y-auto p-4">
+                    <div className="flex flex-col space-y-2">
+                      {navLinks.map((link) => (
+                        <Link
+                          key={link.to}
+                          to={link.to}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-accent transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="p-4 border-t border-border/20 text-sm text-muted-foreground">
+                    © {new Date().getFullYear()} Waterfall Explorer
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

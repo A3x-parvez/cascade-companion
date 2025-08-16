@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MapPin, Waves } from 'lucide-react';
 import heroImage from '@/assets/hero-waterfall.jpg';
 
 const Hero = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    // This is where you would typically handle the search logic,
+    // e.g., navigate to a search results page.
+    console.log('Searching for:', searchQuery);
+  };
+
+  const handleCountryClick = (country: string) => {
+    setSearchQuery(country);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -33,17 +45,20 @@ const Hero = () => {
           Discover the world's most magnificent waterfalls, from hidden gems to iconic cascades
         </p>
         
-        {/* Search Bar */}
+       {/* Search Bar */}
         <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 shadow-[var(--shadow-water)] border border-border/20">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input 
                 placeholder="Search waterfalls by name or country..."
-                className="pl-10 h-12 text-lg bg-background/50 border-border/30"
+                className="pl-10 h-12 text-lg bg-muted border-border/30"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
             </div>
-            <Button size="lg" className="ocean-gradient hover:opacity-90 transition-opacity px-8 h-12">
+            <Button size="lg" className="ocean-gradient hover:opacity-90 transition-opacity px-8 h-12" onClick={handleSearch}>
               <MapPin className="w-5 h-5 mr-2" />
               Explore Map
             </Button>
@@ -56,13 +71,14 @@ const Hero = () => {
                 variant="outline"
                 size="sm"
                 className="bg-background/30 border-border/30 hover:bg-accent/50"
+                onClick={() => handleCountryClick(country)}
               >
                 {country}
               </Button>
             ))}
           </div>
         </div>
-        
+
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 mt-12 text-primary-foreground">
           <div className="text-center">
