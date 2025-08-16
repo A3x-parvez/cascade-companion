@@ -23,6 +23,7 @@ import Blog from "./pages/Blog";
 import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Help from "./pages/Help";
+import SearchResults from "./pages/SearchResults";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           
+          {/* Search Route */}
+          <Route path="/search" element={<SearchResults />} />
+
           {/* Tallest routes */}
           <Route path="/tallest/overall-height" element={<OverallHeight />} />
           <Route path="/tallest/single-drop" element={<SingleDrop />} />

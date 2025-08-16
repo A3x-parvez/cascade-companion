@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, MapPin, Waves } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/hero-waterfall.jpg';
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    // This is where you would typically handle the search logic,
-    // e.g., navigate to a search results page.
-    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
   };
 
   const handleCountryClick = (country: string) => {
-    setSearchQuery(country);
+    navigate(`/search?q=${encodeURIComponent(country)}`);
   };
 
   return (
@@ -59,8 +61,8 @@ const Hero = () => {
               />
             </div>
             <Button size="lg" className="ocean-gradient hover:opacity-90 transition-opacity px-8 h-12" onClick={handleSearch}>
-              <MapPin className="w-5 h-5 mr-2" />
-              Explore Map
+              <Search className="w-5 h-5 mr-2" />
+              Search
             </Button>
           </div>
           
