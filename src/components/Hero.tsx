@@ -16,7 +16,10 @@ const Hero = () => {
   };
 
   const handleCountryClick = (country: string) => {
-    navigate(`/search?q=${encodeURIComponent(country)}`);
+    // Set the search query to the selected country and navigate to search results
+    setSearchQuery(country);
+    // Set the search directly
+    // navigate(`/search?q=${encodeURIComponent(country)}`);
   };
 
   return (
