@@ -13,8 +13,8 @@ const AverageVolume = () => {
       // Simulate a data fetch
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 1000); // 1.5 second delay
-  
+      }, 1000); // 1 second delay
+
       return () => clearTimeout(timer);
     }, []);
 
