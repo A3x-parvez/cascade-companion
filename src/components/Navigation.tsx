@@ -29,7 +29,7 @@ const Navigation = () => {
           {/* Navigation Links */}
           <div className="hidden lg:flex items-center space-x-1">
             {/* Tallest Dropdown */}
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="hover:bg-accent">
                   <TrendingUp className="w-4 h-4 mr-2" />
@@ -51,7 +51,7 @@ const Navigation = () => {
             </DropdownMenu>
 
             {/* Largest Dropdown */}
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="hover:bg-accent">
                   <Expand className="w-4 h-4 mr-2" />
