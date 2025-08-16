@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import TableSkeleton from '@/components/TableSkeleton';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
@@ -6,6 +7,17 @@ import { volumeNoRapids } from '@/data/waterfallData';
 import { Expand } from 'lucide-react';
 
 const VolumeNoRapids = () => {
+  const [isLoading, setIsLoading] = useState(true);
+        
+          useEffect(() => {
+            // Simulate a data fetch
+            const timer = setTimeout(() => {
+              setIsLoading(false);
+            }, 1000); // 1 second delay
+
+            return () => clearTimeout(timer);
+          }, []);
+  
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -20,8 +32,11 @@ const VolumeNoRapids = () => {
               Waterfalls with massive volume flowing smoothly without rapids or turbulent sections.
             </p>
           </div>
-          
+           {isLoading ? (
+            <TableSkeleton />
+          ) : (
           <WaterfallTable waterfalls={volumeNoRapids} />
+          )}
         </div>
       </main>
       <Footer />

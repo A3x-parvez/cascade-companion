@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
+import TableSkeleton from '@/components/TableSkeleton';
 import { freeFallingDrops } from '@/data/waterfallData';
 import { TrendingUp } from 'lucide-react';
 
 const FreeFalling = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      // Simulate a data fetch
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 1000); // 1.5 second delay
+  
+      return () => clearTimeout(timer);
+    }, []);
+  
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -20,8 +32,12 @@ const FreeFalling = () => {
               Marvel at waterfalls where water falls freely through the air without touching the cliff face.
             </p>
           </div>
-          
-          <WaterfallTable waterfalls={freeFallingDrops} />
+
+           {isLoading ? (
+            <TableSkeleton />
+          ) : (
+            <WaterfallTable waterfalls={freeFallingDrops} />
+          )}
         </div>
       </main>
       <Footer />

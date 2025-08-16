@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import TableSkeleton from '@/components/TableSkeleton';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
@@ -6,6 +7,17 @@ import { volumeStillExist } from '@/data/waterfallData';
 import { Expand } from 'lucide-react';
 
 const VolumeExist = () => {
+  const [isLoading, setIsLoading] = useState(true);
+      
+        useEffect(() => {
+          // Simulate a data fetch
+          const timer = setTimeout(() => {
+            setIsLoading(false);
+          }, 1000); // 1 second delay
+
+          return () => clearTimeout(timer);
+        }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -20,8 +32,11 @@ const VolumeExist = () => {
               Historic high-volume waterfalls that maintain their flow and still exist today.
             </p>
           </div>
-          
-          <WaterfallTable waterfalls={volumeStillExist} />
+           {isLoading ? (
+            <TableSkeleton />
+          ) : (
+            <WaterfallTable waterfalls={volumeStillExist} />
+          )}
         </div>
       </main>
       <Footer />

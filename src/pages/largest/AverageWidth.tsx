@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import TableSkeleton from '@/components/TableSkeleton';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
@@ -6,6 +7,17 @@ import { largestByWidth } from '@/data/waterfallData';
 import { Expand } from 'lucide-react';
 
 const AverageWidth = () => {
+  const [isLoading, setIsLoading] = useState(true);
+    
+      useEffect(() => {
+        // Simulate a data fetch
+        const timer = setTimeout(() => {
+          setIsLoading(false);
+        }, 1000); // 1 second delay
+
+        return () => clearTimeout(timer);
+      }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -20,8 +32,12 @@ const AverageWidth = () => {
               Explore the widest waterfalls in the world, showcasing nature's grandest curtains of water.
             </p>
           </div>
-          
-          <WaterfallTable waterfalls={largestByWidth} />
+
+          {isLoading ? (
+            <TableSkeleton />
+          ) : (
+            <WaterfallTable waterfalls={largestByWidth} />
+          )}
         </div>
       </main>
       <Footer />

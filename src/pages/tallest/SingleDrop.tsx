@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
+import TableSkeleton from '@/components/TableSkeleton';
 import { tallestSingleDrop } from '@/data/waterfallData';
 import { TrendingUp } from 'lucide-react';
 
 const SingleDrop = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a data fetch
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // 1 second delay
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -21,7 +33,11 @@ const SingleDrop = () => {
             </p>
           </div>
           
-          <WaterfallTable waterfalls={tallestSingleDrop} />
+          {isLoading ? (
+            <TableSkeleton />
+          ) : (
+            <WaterfallTable waterfalls={tallestSingleDrop} />
+          )}
         </div>
       </main>
       <Footer />
