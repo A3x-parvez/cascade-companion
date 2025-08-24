@@ -131,8 +131,10 @@ export interface Waterfall {
   id: string;
   type: string;
   name: string;
-  avgWidth: number;
-  avgHeight: number;
+  avgWidth: string;
+  avgHeight: string;
+  avgWidthnum: number;
+  avgHeightnum: number;
   watercourse: string;
   location: string;
 }
@@ -180,8 +182,10 @@ export const dummyWaterfalls = () => {
           type: w.remarks || 'N/A',
           name: w.waterfallname,
           // Safely parse width and height from string to number, defaulting to 0 if invalid.
-          avgWidth: parseInt(w.width, 10) || 'Unknown',
-          avgHeight: parseInt(w.height, 10) || 0,
+          avgWidth: w.width,
+          avgHeight: w.height,
+          avgWidthnum: w.width || 'Unknown',
+          avgHeightnum: parseInt(w.height, 10) || 0,
           watercourse: w.course_name,
           // Combine location and state for the full location string.
           location: `${w.location}, ${w.state}`,
@@ -205,13 +209,13 @@ export const dummyWaterfalls = () => {
   // which prevents mutating the original state directly.
 
   const tallestOverallHeight = useMemo(() =>
-    [...waterfalls].sort((a, b) => b.avgHeight - a.avgHeight), [waterfalls]);
+    [...waterfalls].sort((a, b) => b.avgWidthnum - a.avgHeightnum), [waterfalls]);
 
   const largestByWidth = useMemo(() =>
-    [...waterfalls].sort((a, b) => b.avgWidth - a.avgWidth), [waterfalls]);
+    [...waterfalls].sort((a, b) => b.avgWidthnum - a.avgWidthnum), [waterfalls]);
 
   const volumeStillExist = useMemo(() =>
-    [...waterfalls].sort((a, b) => b.avgWidth - a.avgWidth), [waterfalls]);
+    [...waterfalls].sort((a, b) => b.avgWidthnum- a.avgWidthnum), [waterfalls]);
 
   const waterfallsByState = useMemo(() => {
     // This dynamically creates groups based on the state from the API data.

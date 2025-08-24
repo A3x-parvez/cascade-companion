@@ -32,10 +32,12 @@ const ViewAllwaterfall = () => {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-4 py-2 border">Name</th>
-              <th className="px-4 py-2 border">Avg Width (m)</th>
-              <th className="px-4 py-2 border">Avg Height (m)</th>
-              <th className="px-4 py-2 border">Watercourse</th>
+              <th className="px-4 py-2 border">Width</th>
+              <th className="px-4 py-2 border">Height</th>
+              <th className="px-4 py-2 border">Course Name</th>
               <th className="px-4 py-2 border">Location</th>
+              <th className="px-4 py-2 border">Remarks</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -46,6 +48,7 @@ const ViewAllwaterfall = () => {
                 <td className="px-4 py-2 border">{waterfall.avgHeight}</td>
                 <td className="px-4 py-2 border">{waterfall.watercourse}</td>
                 <td className="px-4 py-2 border">{waterfall.location}</td>
+                <td className="px-4 py-2 border">{waterfall.type}</td>
               </tr>
             ))}
           </tbody>

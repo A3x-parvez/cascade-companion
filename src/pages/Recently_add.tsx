@@ -5,7 +5,7 @@ import { Clock } from 'lucide-react';
 
 // Define the structure of a single waterfall from your API
 interface Waterfall {
-  id: string; // This is the MongoDB ObjectId
+  id: string;
   waterfallname: string;
   height: string;
   width: string;
@@ -13,6 +13,7 @@ interface Waterfall {
   course_name: string;
   location: string;
   state: string;
+  remarks: string; // CORRECTED: Changed from 'Remarks' to 'remarks' to match your API
 }
 
 // Helper function to extract the date from a MongoDB ObjectId
@@ -53,12 +54,7 @@ const RecentlyAddedWaterfalls = () => {
         }
 
         const unsortedData: Waterfall[] = await response.json();
-
-        // --- NEW SORTING LOGIC ---
-        // Sorts the array by the 'id' in descending order (newest first)
         const sortedData = unsortedData.sort((a, b) => b.id.localeCompare(a.id));
-        // --- END OF NEW LOGIC ---
-
         setWaterfalls(sortedData);
 
       } catch (e: any) {
@@ -86,7 +82,7 @@ const RecentlyAddedWaterfalls = () => {
             <div className="mb-8">
                 <div className="flex items-center mb-4">
                     <Clock className="w-8 h-8 text-blue-600 mr-3" />
-                    <h1 className="text-4xl font-bold">Recently Updates Waterfalls</h1>
+                    <h1 className="text-4xl font-bold">Recently Added Waterfalls</h1>
                 </div>
                 <p className="text-lg text-gray-600">
                     The latest additions to our waterfall database, sorted by date.
@@ -104,6 +100,7 @@ const RecentlyAddedWaterfalls = () => {
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Width</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">River</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarks</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
@@ -116,6 +113,11 @@ const RecentlyAddedWaterfalls = () => {
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.width}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.course_name}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.location}</td>
+                                
+                                {/* MODIFIED: Show 'NA' if remarks is empty */}
+                                <td className="px-6 py-4 text-sm text-gray-500">
+                                    {waterfall.remarks ? waterfall.remarks : 'NA'}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
