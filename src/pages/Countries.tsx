@@ -48,7 +48,7 @@ const States = () => {
           </div>
           
           <div className="space-y-4">
-            {Object.entries(waterfallsByState).map(([state, waterfalls]) => (
+            {Object.entries(waterfallsByState).sort(([a], [b]) => a.localeCompare(b)).map(([state, waterfalls]) => (
               <div key={state} className="border border-gray-200 rounded-lg">
                 <h2 
                   className="text-2xl font-bold p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50"

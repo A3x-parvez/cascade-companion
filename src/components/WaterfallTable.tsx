@@ -12,10 +12,12 @@ interface Waterfall {
   id: string;
   type: string;
   name: string;
+  no_of_drops:string;
   avgWidth: string;
   avgHeight: string;
   watercourse: string;
   location: string;
+  coordinate:string;
 }
 
 interface WaterfallTableProps {
@@ -37,8 +39,10 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
               <TableHead className="font-semibold">Waterfall Name</TableHead>
               <TableHead className="font-semibold">Width</TableHead>
               <TableHead className="font-semibold">Height</TableHead>
+              <TableHead className="font-semibold">No of drop</TableHead>
               <TableHead className="font-semibold">Course Name</TableHead>
               <TableHead className="font-semibold">Location</TableHead>
+              <TableHead className="font-semibold">Coordinate</TableHead>
               <TableHead className="font-semibold">Remark</TableHead>
             </TableRow>
           </TableHeader>
@@ -50,8 +54,10 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
                 </TableCell>
                 <TableCell>{waterfall.avgWidth}</TableCell>
                 <TableCell>{waterfall.avgHeight}</TableCell>
+                <TableCell>{waterfall.no_of_drops}</TableCell>
                 <TableCell>{waterfall.watercourse}</TableCell>
                 <TableCell>{waterfall.location}</TableCell>
+                <TableCell>{waterfall.coordinate}</TableCell>
                 <TableCell className="font-medium">{waterfall.type}</TableCell>
               </TableRow>
             ))}

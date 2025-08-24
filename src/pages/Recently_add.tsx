@@ -3,7 +3,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Clock } from 'lucide-react';
 
-// Define the structure of a single waterfall from your API
+// 1. Correct the interface to match your API
 interface Waterfall {
   id: string;
   waterfallname: string;
@@ -13,7 +13,9 @@ interface Waterfall {
   course_name: string;
   location: string;
   state: string;
-  remarks: string; // CORRECTED: Changed from 'Remarks' to 'remarks' to match your API
+  remarks: string;
+  latitude: string;  // Changed from coordinate
+  longitude: string; // Added longitude
 }
 
 // Helper function to extract the date from a MongoDB ObjectId
@@ -94,12 +96,15 @@ const RecentlyAddedWaterfalls = () => {
                     <thead className="bg-gray-50">
                         <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Added</th>
+                          
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">State</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No of drop</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Height</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Width</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">River</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">State</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coordinates</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarks</th>
                         </tr>
                     </thead>
@@ -108,13 +113,18 @@ const RecentlyAddedWaterfalls = () => {
                             <tr key={waterfall.id} className="hover:bg-gray-50">
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{getDateFromObjectId(waterfall.id)}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{waterfall.waterfallname}</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.state}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{waterfall.no_of_drops}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.height}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.width}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.course_name}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.state}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{waterfall.location}</td>
                                 
-                                {/* MODIFIED: Show 'NA' if remarks is empty */}
+                                {/* 2. Combine latitude and longitude for display */}
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {waterfall.latitude && waterfall.longitude ? `${waterfall.latitude}, ${waterfall.longitude}` : 'NA'}
+                                </td>
+                                
                                 <td className="px-6 py-4 text-sm text-gray-500">
                                     {waterfall.remarks ? waterfall.remarks : 'NA'}
                                 </td>

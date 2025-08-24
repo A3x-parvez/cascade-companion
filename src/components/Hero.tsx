@@ -77,7 +77,7 @@ const Hero = () => {
           <Waves className="w-12 h-12 text-white mr-4" />
           <h1 className="text-5xl md:text-7xl font-bold text-white">
             India Waterfall 
-            <span className="block text-4xl md:text-6xl text-cyan-300"></span>
+            <span className="block text-4xl md:text-6xl text-cyan-300">Database</span>
           </h1>
         </div>
         

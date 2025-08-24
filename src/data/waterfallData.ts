@@ -131,12 +131,16 @@ export interface Waterfall {
   id: string;
   type: string;
   name: string;
+  no_of_drops: string;
   avgWidth: string;
   avgHeight: string;
   avgWidthnum: number;
   avgHeightnum: number;
   watercourse: string;
   location: string;
+  latitude: string;
+  longitude: string;
+  coordinate:string;
 }
 
 /**
@@ -182,6 +186,7 @@ export const dummyWaterfalls = () => {
           type: w.remarks || 'N/A',
           name: w.waterfallname,
           // Safely parse width and height from string to number, defaulting to 0 if invalid.
+          no_of_drops: w.no_of_drops,
           avgWidth: w.width,
           avgHeight: w.height,
           avgWidthnum: w.width || 'Unknown',
@@ -189,6 +194,7 @@ export const dummyWaterfalls = () => {
           watercourse: w.course_name,
           // Combine location and state for the full location string.
           location: `${w.location}, ${w.state}`,
+          coordinate: `${w.latitude},${w.longitude}`
         }));
 
         setWaterfalls(transformedData);

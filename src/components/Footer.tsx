@@ -38,7 +38,7 @@ const Footer = () => {
                 <Waves className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900">Indian Waterfall Database</h3>
+                <h3 className="text-lg font-bold text-gray-900">India Waterfall Database</h3>
                 <p className="text-sm text-gray-500">Discover Nature's Beauty</p>
               </div>
             </div>
