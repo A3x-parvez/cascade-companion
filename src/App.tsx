@@ -24,6 +24,7 @@ import Books from "./pages/Books";
 import Contact from "./pages/Contact";
 import Help from "./pages/Help";
 import SearchResults from "./pages/SearchResults";
+import RecentlyAdd from "./pages/Recently_add";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/books" element={<Books />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/Recently_add" element={<RecentlyAdd />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

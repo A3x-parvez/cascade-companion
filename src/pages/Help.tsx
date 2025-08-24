@@ -53,7 +53,7 @@ const Help = () => {
                   <AccordionTrigger>How do I search for waterfalls?</AccordionTrigger>
                   <AccordionContent>
                     You can search for waterfalls using our search feature in the navigation bar. 
-                    Search by name, location, country, or waterfall type. You can also browse by 
+                    Search by name, location, state, or waterfall type. You can also browse by 
                     categories like height or width using our specialized sections.
                   </AccordionContent>
                 </AccordionItem>

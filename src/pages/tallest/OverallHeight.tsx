@@ -29,7 +29,7 @@ const OverallHeight = () => {
               <h1 className="text-4xl font-bold text-foreground">Tallest Waterfalls by Overall Height</h1>
             </div>
             <p className="text-lg text-muted-foreground">
-              Discover the world's tallest waterfalls ranked by their total vertical drop from top to bottom.
+              Discover the India's tallest waterfalls ranked by their total vertical drop from top to bottom.
             </p>
           </div>
           

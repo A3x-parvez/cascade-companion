@@ -31,7 +31,7 @@ const Hero = () => {
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 hero-gradient opacity-50" />
+      <div className="absolute inset-0 hero-gradient opacity-60" />
       
       {/* Mist Effect */}
       {/* <div className="absolute bottom-0 left-0 right-0 h-1/3 mist-overlay" /> */}
@@ -41,13 +41,13 @@ const Hero = () => {
         <div className="flex items-center justify-center mb-6">
           <Waves className="w-12 h-12 text-primary-foreground mr-4 flow-animation" />
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground">
-            India Waterfalls
-            {/* <span className="block text-4xl md:text-6xl text-ocean-light">Explorer</span> */}
+            India Waterfall 
+            <span className="block text-4xl md:text-6xl text-ocean-light">Database</span>
           </h1>
         </div>
         
         <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
-          Discover the world's most magnificent waterfalls, from hidden gems to iconic cascades
+          Discover the India's most magnificent waterfalls, from hidden gems to iconic cascades
         </p>
         
        {/* Search Bar */}
@@ -56,7 +56,7 @@ const Hero = () => {
             <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input 
-                placeholder="Search waterfalls by name or country..."
+                placeholder="Search waterfalls by name or state..."
                 className="pl-10 h-12 text-lg bg-muted border-border/30"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -70,7 +70,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-wrap gap-2 mt-4 justify-center">
-            {['Iceland', 'Brazil', 'Norway', 'Canada', 'New Zealand'].map((country) => (
+            {['Karnataka', 'Kerala', 'Maharashtra', 'Chhattisgarh', 'Meghalaya'].map((country) => (
               <Button
                 key={country}
                 variant="outline"

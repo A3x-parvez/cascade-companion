@@ -11,95 +11,96 @@ export interface Waterfall {
 export const dummyWaterfalls: Waterfall[] = [
   {
     id: '1',
-    type: 'Plunge',
-    name: 'Angel Falls',
-    avgWidth: 150,
-    avgHeight: 979,
-    watercourse: 'Kerep River',
-    location: 'Venezuela, Canaima National Park'
+    type: 'Segmented',
+    name: 'Jog Falls',
+    avgWidth: 472,
+    avgHeight: 253,
+    watercourse: 'Sharavathi River',
+    location: 'India, Karnataka'
   },
   {
     id: '2',
-    type: 'Cataract',
-    name: 'Niagara Falls',
-    avgWidth: 1203,
-    avgHeight: 51,
-    watercourse: 'Niagara River',
-    location: 'USA/Canada Border'
+    type: 'Block',
+    name: 'Athirappilly Falls',
+    avgWidth: 100,
+    avgHeight: 80,
+    watercourse: 'Chalakudy River',
+    location: 'India, Kerala'
   },
   {
     id: '3',
-    type: 'Cascade',
-    name: 'Iguazu Falls',
-    avgWidth: 2700,
-    avgHeight: 82,
-    watercourse: 'Iguazu River',
-    location: 'Argentina/Brazil Border'
+    type: 'Plunge',
+    name: 'Nohkalikai Falls',
+    avgWidth: 23,
+    avgHeight: 340,
+    watercourse: 'Unnamed stream near Cherrapunji',
+    location: 'India, Meghalaya'
   },
   {
     id: '4',
-    type: 'Curtain',
-    name: 'Victoria Falls',
-    avgWidth: 1708,
-    avgHeight: 108,
-    watercourse: 'Zambezi River',
-    location: 'Zambia/Zimbabwe Border'
+    type: 'Horseshoe',
+    name: 'Chitrakote Falls',
+    avgWidth: 300,
+    avgHeight: 29,
+    watercourse: 'Indravati River',
+    location: 'India, Chhattisgarh'
   },
   {
     id: '5',
     type: 'Tiered',
-    name: 'Gullfoss',
-    avgWidth: 70,
-    avgHeight: 32,
-    watercourse: 'Hvítá River',
-    location: 'Iceland, Golden Circle'
+    name: 'Dudhsagar Falls',
+    avgWidth: 30,
+    avgHeight: 310,
+    watercourse: 'Mandovi River',
+    location: 'India, Goa'
   },
   {
     id: '6',
-    type: 'Plunge',
-    name: 'Tugela Falls',
-    avgWidth: 15,
-    avgHeight: 948,
-    watercourse: 'Tugela River',
-    location: 'South Africa, KwaZulu-Natal'
+    type: 'Cascade',
+    name: 'Vajrai Falls',
+    avgWidth: 70,
+    avgHeight: 560,
+    watercourse: 'Urvashi River',
+    location: 'India, Maharashtra'
   },
   {
     id: '7',
-    type: 'Horsetail',
-    name: 'Yosemite Falls',
-    avgWidth: 18,
-    avgHeight: 739,
-    watercourse: 'Yosemite Creek',
-    location: 'USA, California'
+    type: 'Block',
+    name: 'Hogenakkal Falls',
+    avgWidth: 300,
+    avgHeight: 20,
+    watercourse: 'Kaveri River',
+    location: 'India, Tamil Nadu'
   },
   {
     id: '8',
-    type: 'Multi-step',
-    name: 'Kaieteur Falls',
-    avgWidth: 113,
-    avgHeight: 226,
-    watercourse: 'Potaro River',
-    location: 'Guyana, Kaieteur National Park'
+    type: 'Plunge',
+    name: 'Barehipani Falls',
+    avgWidth: 120,
+    avgHeight: 399,
+    watercourse: 'Budhabalanga River',
+    location: 'India, Odisha'
   },
   {
     id: '9',
     type: 'Cascade',
-    name: 'Skógafoss',
-    avgWidth: 25,
-    avgHeight: 60,
-    watercourse: 'Skógá River',
-    location: 'Iceland, South Region'
+    name: 'Kempty Falls',
+    avgWidth: 15,
+    avgHeight: 40,
+    watercourse: 'Tons River tributary',
+    location: 'India, Uttarakhand'
   },
   {
     id: '10',
     type: 'Plunge',
-    name: 'Sutherland Falls',
-    avgWidth: 12,
-    avgHeight: 580,
-    watercourse: 'Arthur River',
-    location: 'New Zealand, Fiordland'
+    name: 'Hundru Falls',
+    avgWidth: 50,
+    avgHeight: 98,
+    watercourse: 'Subarnarekha River',
+    location: 'India, Jharkhand'
   }
 ];
+
 
 export const tallestOverallHeight = dummyWaterfalls.sort((a, b) => b.avgHeight - a.avgHeight);
 export const tallestSingleDrop = dummyWaterfalls.filter(w => w.type === 'Plunge').sort((a, b) => b.avgHeight - a.avgHeight);
@@ -111,12 +112,14 @@ export const volumeNoRapids = dummyWaterfalls.filter(w => w.type === 'Plunge' ||
 export const volumeStillExist = dummyWaterfalls.sort((a, b) => b.avgWidth - a.avgWidth);
 
 export const waterfallsByCountry = {
-  'Venezuela': dummyWaterfalls.filter(w => w.location.includes('Venezuela')),
-  'USA/Canada': dummyWaterfalls.filter(w => w.location.includes('USA') || w.location.includes('Canada')),
-  'Argentina/Brazil': dummyWaterfalls.filter(w => w.location.includes('Argentina') || w.location.includes('Brazil')),
-  'Zambia/Zimbabwe': dummyWaterfalls.filter(w => w.location.includes('Zambia') || w.location.includes('Zimbabwe')),
-  'Iceland': dummyWaterfalls.filter(w => w.location.includes('Iceland')),
-  'South Africa': dummyWaterfalls.filter(w => w.location.includes('South Africa')),
-  'Guyana': dummyWaterfalls.filter(w => w.location.includes('Guyana')),
-  'New Zealand': dummyWaterfalls.filter(w => w.location.includes('New Zealand')),
+'Karnataka': dummyWaterfalls.filter(w => w.location.includes('Karnataka')),
+  'Kerala': dummyWaterfalls.filter(w => w.location.includes('Kerala')),
+  'Meghalaya': dummyWaterfalls.filter(w => w.location.includes('Meghalaya')),
+  'Chhattisgarh': dummyWaterfalls.filter(w => w.location.includes('Chhattisgarh')),
+  'Goa': dummyWaterfalls.filter(w => w.location.includes('Goa')),
+  'Maharashtra': dummyWaterfalls.filter(w => w.location.includes('Maharashtra')),
+  'Tamil Nadu': dummyWaterfalls.filter(w => w.location.includes('Tamil Nadu')),
+  'Odisha': dummyWaterfalls.filter(w => w.location.includes('Odisha')),
+  'Uttarakhand': dummyWaterfalls.filter(w => w.location.includes('Uttarakhand')),
+  'Jharkhand': dummyWaterfalls.filter(w => w.location.includes('Jharkhand'))
 };

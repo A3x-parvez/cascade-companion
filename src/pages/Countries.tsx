@@ -14,10 +14,10 @@ const Countries = () => {
           <div className="mb-8">
             <div className="flex items-center mb-4">
               <Globe2 className="w-8 h-8 text-ocean-deep mr-3" />
-              <h1 className="text-4xl font-bold text-foreground">Browse Waterfalls by Country</h1>
+              <h1 className="text-4xl font-bold text-foreground">Browse Waterfalls by State</h1>
             </div>
             <p className="text-lg text-muted-foreground">
-              Explore magnificent waterfalls organized by their geographic locations around the world.
+              Explore magnificent waterfalls organized by their geographic locations around India.
             </p>
           </div>
           
