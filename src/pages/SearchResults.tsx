@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
 import TableSkeleton from '@/components/TableSkeleton';
-import { dummyWaterfalls } from '@/data/waterfallData';
+import { dummyWaterfalls, Waterfall } from '@/data/waterfallData';
 import { Search } from 'lucide-react';
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || '';
-  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredWaterfalls = dummyWaterfalls.filter(waterfall =>
+  // Use our custom hook to fetch waterfalls
+  const { isLoading, error, waterfalls } = dummyWaterfalls();
+
+  // Filter waterfalls based on the query
+  const filteredWaterfalls = waterfalls.filter((waterfall: Waterfall) =>
     waterfall.name.toLowerCase().includes(query.toLowerCase()) ||
     waterfall.location.toLowerCase().includes(query.toLowerCase())
   );
-
-  useEffect(() => {
-    setIsLoading(true);
-    // Simulate a data fetch
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 900); // 0.9 second delay
-
-    return () => clearTimeout(timer);
-  }, [query]); // Re-run effect when query changes
 
   return (
     <div className="min-h-screen">
@@ -39,15 +32,21 @@ const SearchResults = () => {
                 Search Results for "{query}"
               </h1>
             </div>
-            {!isLoading && (
+
+            {!isLoading && !error && (
               <p className="text-lg text-muted-foreground">
                 {filteredWaterfalls.length} waterfalls found matching your search.
               </p>
             )}
           </div>
-          
+
           {isLoading ? (
             <TableSkeleton />
+          ) : error ? (
+            <div className="text-center py-16">
+              <h2 className="text-2xl font-semibold text-red-500">Error</h2>
+              <p className="text-muted-foreground mt-2">{error}</p>
+            </div>
           ) : filteredWaterfalls.length > 0 ? (
             <WaterfallTable waterfalls={filteredWaterfalls} />
           ) : (

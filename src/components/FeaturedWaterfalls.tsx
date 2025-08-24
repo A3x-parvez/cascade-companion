@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Compass } from 'lucide-react';
 import WaterfallCard from './WaterfallCard';
-
+import { useNavigate } from 'react-router-dom';
 // Sample data - this would come from Supabase in the full implementation
 const featuredWaterfalls = [
   {
@@ -51,9 +51,13 @@ const featuredWaterfalls = [
     description: 'Famous for its milky white appearance, Dudhsagar Falls cascades down the Western Ghats along the Goa-Karnataka border.'
   }
 ];
-
-
 const FeaturedWaterfalls = () => {
+  const navigate = useNavigate(); // <-- hook for navigation
+
+  const handleViewAll = () => {
+    navigate('/ViewAllwaterfall'); // <-- navigate to page
+  };
+
   return (
     <section className="py-16 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
@@ -69,17 +73,21 @@ const FeaturedWaterfalls = () => {
             Explore some of the India's most magnificent waterfalls, from towering giants to hidden treasures
           </p>
         </div>
-        
+
         {/* Waterfall Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {featuredWaterfalls.map((waterfall) => (
             <WaterfallCard key={waterfall.id} waterfall={waterfall} />
           ))}
         </div>
-        
+
         {/* View All Button */}
         <div className="text-center">
-          <Button size="lg" className="ocean-gradient hover:opacity-90 transition-opacity px-8">
+          <Button
+            size="lg"
+            className="ocean-gradient hover:opacity-90 transition-opacity px-8"
+            onClick={handleViewAll} // <-- button click navigates
+          >
             View All Waterfalls
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>

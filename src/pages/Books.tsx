@@ -1,125 +1,123 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import { Book } from 'lucide-react';
+import { FileText, BookOpen } from 'lucide-react'; // Using a more relevant icon
 
-interface BookData {
+// Define a type for our material structure to match the API
+interface Material {
   id: string;
-  type: string;
   title: string;
-  avgWidth: number; // pages
-  avgHeight: number; // publication year
-  watercourse: string; // author
-  location: string; // publisher/location
+  description: string;
+  pdf_id: string;
 }
 
-const dummyBooks: BookData[] = [
-  {
-    id: '1',
-    type: 'Field Guide',
-    title: 'Waterfalls of India: A Field Guide',
-    avgWidth: 324,
-    avgHeight: 2022,
-    watercourse: 'Dr. Raghavendra Rao',
-    location: 'National Book Trust, New Delhi'
-  },
-  {
-    id: '2',
-    type: 'Photography',
-    title: 'Jharna: Waterfalls Through the Lens',
-    avgWidth: 256,
-    avgHeight: 2023,
-    watercourse: 'Sudhir Shivaram',
-    location: 'Penguin Random House India, Gurugram'
-  },
-  {
-    id: '3',
-    type: 'Scientific Study',
-    title: 'Hydrology of Indian Rivers and Waterfalls',
-    avgWidth: 412,
-    avgHeight: 2024,
-    watercourse: 'Prof. Anjali Kulkarni',
-    location: 'Indian Academy of Sciences, Bengaluru'
-  },
-  {
-    id: '4',
-    type: 'Travel Guide',
-    title: 'Exploring India’s Hidden Waterfalls',
-    avgWidth: 288,
-    avgHeight: 2023,
-    watercourse: 'Lonely Planet India Team',
-    location: 'Lonely Planet India, Mumbai'
-  },
-  {
-    id: '5',
-    type: 'Historical',
-    title: 'Myths & Legends of Indian Waterfalls',
-    avgWidth: 195,
-    avgHeight: 2021,
-    watercourse: 'Dr. Kavita Deshpande',
-    location: 'Rupa Publications, New Delhi'
-  },
-  {
-    id: '6',
-    type: 'Children\'s Book',
-    title: 'Chintu and the Talking Jharna',
-    avgWidth: 32,
-    avgHeight: 2024,
-    watercourse: 'Priya Nair',
-    location: 'Tulika Books, Chennai'
+const Materials = () => {
+  // State to store the materials fetched from the API
+  const [materials, setMaterials] = useState<Material[]>([]);
+  // State to handle loading status
+  const [loading, setLoading] = useState(true);
+  // State to handle any potential errors
+  const [error, setError] = useState<string | null>(null);
+
+  // useEffect hook to fetch data when the component mounts
+  useEffect(() => {
+    const fetchMaterials = async () => {
+      try {
+        // Read the API URL and Key from your .env.local file
+        const apiBaseUrl = import.meta.env.VITE_API_URL;
+        const apiKey = import.meta.env.VITE_API_KEY;
+
+        if (!apiBaseUrl || !apiKey) {
+          throw new Error("API URL or Key is not configured in your .env.local file.");
+        }
+        
+        const response = await fetch(`${apiBaseUrl}/api/v1/materials`, {
+          headers: {
+            'X-API-Key': apiKey,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data: Material[] = await response.json();
+        setMaterials(data); // Update state with the fetched materials
+      } catch (e: any) {
+        setError(e.message);
+        console.error("Failed to fetch materials:", e);
+      } finally {
+        setLoading(false); // Set loading to false once the fetch is complete
+      }
+    };
+
+    fetchMaterials();
+  }, []); // The empty dependency array [] ensures this effect runs only once
+
+  // Show a loading message while fetching data
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <p>Loading materials...</p>
+      </div>
+    );
   }
-];
-const Books = () => {
+
+  // Show an error message if the fetch fails
+  if (error) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <p className="text-red-500">Error: {error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navigation />
       <main className="pt-20 pb-16 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="mb-8">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-12">
             <div className="flex items-center mb-4">
-              <Book className="w-8 h-8 text-ocean-deep mr-3" />
-              <h1 className="text-4xl font-bold text-foreground">Waterfall Books Collection</h1>
+              <BookOpen className="w-8 h-8 text-blue-600 mr-3" />
+              <h1 className="text-4xl font-bold">Materials & Resources</h1>
             </div>
-            <p className="text-lg text-muted-foreground">
-              Discover books about waterfalls, from scientific studies to travel guides and photography collections.
+            <p className="text-lg text-gray-600">
+              A collection of guides, checklists, and research documents available for viewing.
             </p>
           </div>
           
-          <div className="rounded-md border border-border bg-card">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="font-semibold">Book Type</TableHead>
-                  <TableHead className="font-semibold">Book Title</TableHead>
-                  <TableHead className="font-semibold">Pages</TableHead>
-                  <TableHead className="font-semibold">Year</TableHead>
-                  <TableHead className="font-semibold">Author</TableHead>
-                  <TableHead className="font-semibold">Publisher</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {dummyBooks.map((book) => (
-                  <TableRow key={book.id} className="hover:bg-accent/50">
-                    <TableCell className="font-medium">{book.type}</TableCell>
-                    <TableCell className="text-primary hover:underline cursor-pointer">
-                      {book.title}
-                    </TableCell>
-                    <TableCell>{book.avgWidth}</TableCell>
-                    <TableCell>{book.avgHeight}</TableCell>
-                    <TableCell>{book.watercourse}</TableCell>
-                    <TableCell>{book.location}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          <div className="space-y-4">
+            {materials.length > 0 ? (
+              materials.map((material) => {
+                // Construct the full URL to the PDF file
+                const pdfUrl = `${import.meta.env.VITE_API_URL}/media/${material.pdf_id}`;
+                
+                return (
+                  <div key={material.id} className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div className="flex-grow">
+                      <h2 className="text-xl font-bold text-gray-900 mb-2">
+                        {material.title}
+                      </h2>
+                      <p className="text-gray-700 leading-relaxed">
+                        {material.description}
+                      </p>
+                    </div>
+                    <a 
+                      href={pdfUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                    >
+                      <FileText className="w-5 h-5 mr-2" />
+                      View / Download PDF
+                    </a>
+                  </div>
+                );
+              })
+            ) : (
+              <p className="text-center text-gray-500 py-8">No materials found.</p>
+            )}
           </div>
         </div>
       </main>
@@ -128,4 +126,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default Materials;

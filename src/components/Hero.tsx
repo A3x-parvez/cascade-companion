@@ -1,13 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, MapPin, Waves } from 'lucide-react';
+import { Search, Waves } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/hero-waterfall.jpg';
+import CountUp from 'react-countup'; // Using CountUp for a better visual
+
+// Define a type for our stats data
+interface SiteStats {
+  waterfall_count: number;
+  state_count: number;
+}
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  
+  const [stats, setStats] = useState<SiteStats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const apiBaseUrl = import.meta.env.VITE_API_URL;
+        const apiKey = import.meta.env.VITE_API_KEY;
+        if (!apiBaseUrl || !apiKey) {
+          throw new Error("API configuration is missing in .env.local file.");
+        }
+
+        const response = await fetch(`${apiBaseUrl}/api/v1/stats`, {
+          headers: { 'X-API-Key': apiKey },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch stats');
+        }
+        
+        const data: SiteStats = await response.json();
+        setStats(data);
+      } catch (error) {
+        console.error("Error fetching stats:", error);
+        // Set default stats on error so the page doesn't look broken
+        setStats({ waterfall_count: 0, state_count: 0 });
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, []); // Empty array ensures this runs only once
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
@@ -15,11 +55,9 @@ const Hero = () => {
     }
   };
 
-  const handleCountryClick = (country: string) => {
-    // Set the search query to the selected country and navigate to search results
-    setSearchQuery(country);
-    // Set the search directly
-    // navigate(`/search?q=${encodeURIComponent(country)}`);
+  // Corrected and simplified this function
+  const handleStateClick = (state: string) => {
+    navigate(`/search?q=${encodeURIComponent(state)}`);
   };
 
   return (
@@ -31,67 +69,68 @@ const Hero = () => {
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 hero-gradient opacity-60" />
-      
-      {/* Mist Effect */}
-      {/* <div className="absolute bottom-0 left-0 right-0 h-1/3 mist-overlay" /> */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="flex items-center justify-center mb-6">
-          <Waves className="w-12 h-12 text-primary-foreground mr-4 flow-animation" />
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground">
+          <Waves className="w-12 h-12 text-white mr-4" />
+          <h1 className="text-5xl md:text-7xl font-bold text-white">
             India Waterfall 
-            <span className="block text-4xl md:text-6xl text-ocean-light">Database</span>
+            <span className="block text-4xl md:text-6xl text-cyan-300"></span>
           </h1>
         </div>
         
-        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
-          Discover the India's most magnificent waterfalls, from hidden gems to iconic cascades
+        <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+          Discover India's most magnificent waterfalls, from hidden gems to iconic cascades.
         </p>
         
        {/* Search Bar */}
-        <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 shadow-[var(--shadow-water)] border border-border/20">
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20">
           <div className="flex flex-col md:flex-row gap-4 items-center">
             <div className="relative flex-1 w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <Input 
                 placeholder="Search waterfalls by name or state..."
-                className="pl-10 h-12 text-lg bg-muted border-border/30"
+                className="pl-10 h-12 text-lg bg-gray-900/50 text-white border-white/30 placeholder:text-gray-400"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
             </div>
-            <Button size="lg" className="ocean-gradient hover:opacity-90 transition-opacity px-8 h-12" onClick={handleSearch}>
+            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 transition-colors px-8 h-12 text-white" onClick={handleSearch}>
               <Search className="w-5 h-5 mr-2" />
               Search
             </Button>
           </div>
           
           <div className="flex flex-wrap gap-2 mt-4 justify-center">
-            {['Karnataka', 'Kerala', 'Maharashtra', 'Chhattisgarh', 'Meghalaya'].map((country) => (
+            {['Karnataka', 'Kerala', 'Maharashtra', 'Chhattisgarh', 'Meghalaya'].map((state) => (
               <Button
-                key={country}
+                key={state}
                 variant="outline"
                 size="sm"
-                className="bg-background/30 border-border/30 hover:bg-accent/50"
-                onClick={() => handleCountryClick(country)}
+                className="bg-white/10 border-white/30 text-white hover:bg-white/40"
+                onClick={() => handleStateClick(state)}
               >
-                {country}
+                {state}
               </Button>
             ))}
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-12 text-primary-foreground">
+        <div className="grid grid-cols-3 gap-8 mt-12 text-white">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold">1,000+</div>
+            <div className="text-3xl md:text-4xl font-bold">
+              {loading ? '...' : <CountUp end={stats?.waterfall_count || 0} duration={2.5} separator="," suffix="+" />}
+            </div>
             <div className="text-sm md:text-base opacity-90">Waterfalls</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold">28</div>
+            <div className="text-3xl md:text-4xl font-bold">
+              {loading ? '...' : <CountUp end={stats?.state_count || 0} duration={2.5} />}
+            </div>
             <div className="text-sm md:text-base opacity-90">States</div>
           </div>
           <div className="text-center">
@@ -100,13 +139,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary-foreground/60 rounded-full mt-2 ripple-animation"></div>
-        </div>
-      </div> */}
     </section>
   );
 };

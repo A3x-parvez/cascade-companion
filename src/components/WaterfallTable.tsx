@@ -33,18 +33,18 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="font-semibold">Waterfall Type</TableHead>
+              
               <TableHead className="font-semibold">Waterfall Name</TableHead>
               <TableHead className="font-semibold">Avg Width (m)</TableHead>
               <TableHead className="font-semibold">Avg Height (m)</TableHead>
               <TableHead className="font-semibold">Watercourse</TableHead>
               <TableHead className="font-semibold">Location</TableHead>
+              <TableHead className="font-semibold">Remark</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {waterfalls.map((waterfall) => (
               <TableRow key={waterfall.id} className="hover:bg-accent/50">
-                <TableCell className="font-medium">{waterfall.type}</TableCell>
                 <TableCell className="text-primary hover:underline cursor-pointer">
                   {waterfall.name}
                 </TableCell>
@@ -52,6 +52,7 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
                 <TableCell>{waterfall.avgHeight}</TableCell>
                 <TableCell>{waterfall.watercourse}</TableCell>
                 <TableCell>{waterfall.location}</TableCell>
+                <TableCell className="font-medium">{waterfall.type}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -31,7 +31,7 @@ const Navigation = () => {
     { to: "/largest/average-volume", label: "Largest - Average Volume" },
     { to: "/largest/volume-no-rapids", label: "Largest - Volume (no Rapids)" },
     { to: "/largest/volume-exist", label: "Largest - Volume (still exist)" },
-    { to: "/Recently_add", label: "Recently Added" },
+    { to: "/Recently_add", label: "Recently Updates" },
     { to: "/countries", label: "Browse by Country" },
     { to: "/blog", label: "Blog" },
     { to: "/books", label: "Books" },
@@ -66,7 +66,7 @@ const Navigation = () => {
                   <Link to="/countries">Browse by State</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/Recently_add">Recently Added</Link>
+                  <Link to="/Recently_add">Recently Updates</Link>
                 </DropdownMenuItem>
                 {/* <DropdownMenuItem asChild>
                   <Link to="/tallest/free-falling">Free-falling Drops</Link>
