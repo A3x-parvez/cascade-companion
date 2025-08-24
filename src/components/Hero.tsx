@@ -31,18 +31,18 @@ const Hero = () => {
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 hero-gradient" />
+      <div className="absolute inset-0 hero-gradient opacity-50" />
       
       {/* Mist Effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 mist-overlay" />
+      {/* <div className="absolute bottom-0 left-0 right-0 h-1/3 mist-overlay" /> */}
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="flex items-center justify-center mb-6">
           <Waves className="w-12 h-12 text-primary-foreground mr-4 flow-animation" />
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground">
-            Global Waterfall
-            <span className="block text-4xl md:text-6xl text-ocean-light">Explorer</span>
+            India Waterfalls
+            {/* <span className="block text-4xl md:text-6xl text-ocean-light">Explorer</span> */}
           </h1>
         </div>
         
@@ -87,12 +87,12 @@ const Hero = () => {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 mt-12 text-primary-foreground">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold">1,200+</div>
+            <div className="text-3xl md:text-4xl font-bold">1,000+</div>
             <div className="text-sm md:text-base opacity-90">Waterfalls</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold">85</div>
-            <div className="text-sm md:text-base opacity-90">Countries</div>
+            <div className="text-3xl md:text-4xl font-bold">28</div>
+            <div className="text-sm md:text-base opacity-90">States</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold">24/7</div>
@@ -102,11 +102,11 @@ const Hero = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-primary-foreground/60 rounded-full mt-2 ripple-animation"></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

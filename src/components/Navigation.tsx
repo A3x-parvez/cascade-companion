@@ -47,12 +47,12 @@ const Navigation = () => {
             <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
               <Waves className="w-5 h-5 text-primary-foreground" />
             </div>
-            <h1 className="text-md font-bold text-foreground">Waterfall Explorer</h1>
+            <h1 className="text-md font-bold text-foreground">India Waterfalls</h1>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            <DropdownMenu modal={false}>
+            {/* <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="hover:bg-accent text-sm h-9">
                   <TrendingUp className="w-4 h-4 mr-2" />
@@ -71,9 +71,9 @@ const Navigation = () => {
                   <Link to="/tallest/free-falling">Free-falling Drops</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
 
-            <DropdownMenu modal={false}>
+            {/* <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="hover:bg-accent text-sm h-9">
                   <Expand className="w-4 h-4 mr-2" />
@@ -95,10 +95,10 @@ const Navigation = () => {
                   <Link to="/largest/volume-exist">By Volume (still exist)</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
 
             <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by Country</Link>
+              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by State</Link>
             </Button>
             <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
               <Link to="/blog"><MessageCircle className="w-4 h-4 mr-2" />Blog</Link>
@@ -132,7 +132,7 @@ const Navigation = () => {
                     <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
                       <Waves className="w-5 h-5 text-primary-foreground" />
                     </div>
-                    <h2 className="font-semibold text-lg">Waterfall Explorer</h2>
+                    <h2 className="font-semibold text-lg">India Waterfalls</h2>
                   </div>
 
                   {/* Links */}
@@ -153,7 +153,7 @@ const Navigation = () => {
 
                   {/* Footer */}
                   <div className="p-4 border-t border-border/20 text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} Waterfall Explorer
+                    © {new Date().getFullYear()} India Waterfalls
                   </div>
                 </div>
               </SheetContent>
