@@ -7,41 +7,51 @@ import WaterfallCard from './WaterfallCard';
 const featuredWaterfalls = [
   {
     id: '1',
-    name: 'Angel Falls',
-    country: 'Venezuela',
-    height_meters: 979,
-    type: 'Plunge',
+    name: 'Jog Falls',
+    country: 'India (Karnataka)',
+    height_meters: 253,
+    type: 'Segmented',
     image_url: '/placeholder.svg',
-    description: 'The world\'s highest uninterrupted waterfall, cascading from the Auyán-tepui mountain in Canaima National Park.'
+    description: 'One of the highest waterfalls in India, formed by the Sharavathi River, plunging in four distinct cascades.'
   },
   {
     id: '2',
-    name: 'Niagara Falls',
-    country: 'USA/Canada',
-    height_meters: 51,
-    type: 'Cataract',
+    name: 'Athirappilly Falls',
+    country: 'India (Kerala)',
+    height_meters: 80,
+    type: 'Block',
     image_url: '/placeholder.svg',
-    description: 'One of the most famous waterfalls in the world, known for its powerful flow and rainbow mists.'
+    description: 'Often called the "Niagara of India", this waterfall on the Chalakudy River is surrounded by lush green forests.'
   },
   {
     id: '3',
-    name: 'Iguazu Falls',
-    country: 'Argentina/Brazil',
-    height_meters: 82,
-    type: 'Cascade',
+    name: 'Nohkalikai Falls',
+    country: 'India (Meghalaya)',
+    height_meters: 340,
+    type: 'Plunge',
     image_url: '/placeholder.svg',
-    description: 'A spectacular system of 275 waterfalls on the border between Argentina and Brazil.'
+    description: 'The tallest plunge waterfall in India, dropping into a turquoise pool near Cherrapunji.'
   },
   {
     id: '4',
-    name: 'Victoria Falls',
-    country: 'Zambia/Zimbabwe',
-    height_meters: 108,
-    type: 'Curtain',
+    name: 'Chitrakote Falls',
+    country: 'India (Chhattisgarh)',
+    height_meters: 29,
+    type: 'Horseshoe',
     image_url: '/placeholder.svg',
-    description: 'Known locally as "Mosi-oa-Tunya" (the smoke that thunders), it\'s one of the largest waterfalls in the world.'
+    description: 'Also known as the "Niagara of India", this wide horseshoe-shaped waterfall is on the Indravati River.'
+  },
+  {
+    id: '5',
+    name: 'Dudhsagar Falls',
+    country: 'India (Goa)',
+    height_meters: 310,
+    type: 'Tiered',
+    image_url: '/placeholder.svg',
+    description: 'Famous for its milky white appearance, Dudhsagar Falls cascades down the Western Ghats along the Goa-Karnataka border.'
   }
 ];
+
 
 const FeaturedWaterfalls = () => {
   return (
@@ -56,7 +66,7 @@ const FeaturedWaterfalls = () => {
             </h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore some of the world's most magnificent waterfalls, from towering giants to hidden treasures
+            Explore some of the India's most magnificent waterfalls, from towering giants to hidden treasures
           </p>
         </div>
         

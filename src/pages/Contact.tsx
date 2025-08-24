@@ -87,7 +87,7 @@ const Contact = () => {
                       <p className="text-muted-foreground">
                         123 Nature Trail<br />
                         Waterfall Valley, WV 12345<br />
-                        United States
+                        West Bengal, India
                       </p>
                     </div>
                   </div>

@@ -6,37 +6,38 @@ import { MessageCircle, Calendar, User } from 'lucide-react';
 const dummyBlogPosts = [
   {
     id: '1',
-    title: 'The Science Behind Waterfall Formation',
-    excerpt: 'Discover how geological processes create these natural wonders over millions of years.',
-    author: 'Dr. Sarah Johnson',
+    title: 'Paani ka Jadoo: The Science Behind Indian Waterfalls',
+    excerpt: 'Samajhiye kaise prakritik bhugol aur samay ke saath yeh shaandar jharne bante hain.',
+    author: 'Dr. Aditi Sharma',
     date: '2024-01-15',
     readTime: '5 min read'
   },
   {
     id: '2',
-    title: 'Photography Tips for Capturing Waterfalls',
-    excerpt: 'Learn professional techniques for photographing waterfalls in different lighting conditions.',
-    author: 'Mark Chen',
+    title: 'Tips for Clicking Jharnas Like a Pro',
+    excerpt: 'Seekhiye kaise alag-alag roshni mein jharno ki tasveerein aur bhi khoobsurat dikhengi.',
+    author: 'Rohit Verma',
     date: '2024-01-12',
     readTime: '8 min read'
   },
   {
     id: '3',
-    title: 'Climate Change Impact on Waterfall Flow',
-    excerpt: 'Understanding how changing weather patterns affect seasonal waterfall volumes.',
-    author: 'Prof. Emily Rodriguez',
+    title: 'Climate Change aur Jharno ki Behti Dhara',
+    excerpt: 'Samajhiye badalte mausam ka prabhav Bharat ke jharno ke paani par.',
+    author: 'Prof. Kavya Iyer',
     date: '2024-01-10',
     readTime: '6 min read'
   },
   {
     id: '4',
-    title: 'Hidden Waterfalls: Off the Beaten Path',
-    excerpt: 'Explore lesser-known waterfalls that offer pristine natural experiences.',
-    author: 'Adventure Team',
+    title: 'Chhupi Hui Khoj: Bharat ke Hidden Waterfalls',
+    excerpt: 'Khojiye un anjaane jharno ko jo bheed se door, prakriti ke beech asli sukoon dete hain.',
+    author: 'Adventure Yatra Team',
     date: '2024-01-08',
     readTime: '10 min read'
   }
 ];
+
 
 const Blog = () => {
   return (

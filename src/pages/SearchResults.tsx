@@ -54,7 +54,7 @@ const SearchResults = () => {
             <div className="text-center py-16">
               <h2 className="text-2xl font-semibold text-foreground">No Waterfalls Found</h2>
               <p className="text-muted-foreground mt-2">
-                Try searching for a different name or country.
+                Try searching for a different name or state.
               </p>
             </div>
           )}

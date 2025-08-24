@@ -14,13 +14,13 @@ const Footer = () => {
                 <Waves className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-foreground">Global Waterfall Explorer</h3>
+                <h3 className="text-lg font-bold text-foreground">Indian Waterfall Explorer</h3>
                 <p className="text-sm text-muted-foreground">Discover Nature's Beauty</p>
               </div>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Explore the world's most magnificent waterfalls. From hidden gems to iconic cascades, 
-              discover nature's most spectacular water features from around the globe.
+              Explore the India's most magnificent waterfalls. From hidden gems to iconic cascades, 
+              discover nature's most spectacular water features from around India.
             </p>
             <div className="flex space-x-2">
               <Button variant="outline" size="sm">
@@ -41,7 +41,7 @@ const Footer = () => {
             <ul className="space-y-2 text-muted-foreground">
               <li><a href="#" className="hover:text-ocean-deep transition-colors">All Waterfalls</a></li>
               <li><a href="#" className="hover:text-ocean-deep transition-colors">Interactive Map</a></li>
-              <li><a href="#" className="hover:text-ocean-deep transition-colors">Countries</a></li>
+              <li><a href="#" className="hover:text-ocean-deep transition-colors">India</a></li>
               <li><a href="#" className="hover:text-ocean-deep transition-colors">Types</a></li>
               <li><a href="#" className="hover:text-ocean-deep transition-colors">Height Rankings</a></li>
             </ul>

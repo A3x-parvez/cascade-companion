@@ -98,7 +98,7 @@ const Navigation = () => {
             </DropdownMenu>
 
             <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by Country</Link>
+              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by State</Link>
             </Button>
             <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
               <Link to="/blog"><MessageCircle className="w-4 h-4 mr-2" />Blog</Link>

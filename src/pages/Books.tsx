@@ -25,59 +25,58 @@ const dummyBooks: BookData[] = [
   {
     id: '1',
     type: 'Field Guide',
-    title: 'Waterfalls of North America',
+    title: 'Waterfalls of India: A Field Guide',
     avgWidth: 324,
-    avgHeight: 2023,
-    watercourse: 'Dr. Michael Rivers',
-    location: 'Nature Publishing, New York'
+    avgHeight: 2022,
+    watercourse: 'Dr. Raghavendra Rao',
+    location: 'National Book Trust, New Delhi'
   },
   {
     id: '2',
     type: 'Photography',
-    title: 'Capturing the Falls: A Visual Journey',
+    title: 'Jharna: Waterfalls Through the Lens',
     avgWidth: 256,
-    avgHeight: 2022,
-    watercourse: 'Sarah Chen',
-    location: 'Adventure Press, California'
+    avgHeight: 2023,
+    watercourse: 'Sudhir Shivaram',
+    location: 'Penguin Random House India, Gurugram'
   },
   {
     id: '3',
     type: 'Scientific Study',
-    title: 'Hydrology and Waterfall Formation',
+    title: 'Hydrology of Indian Rivers and Waterfalls',
     avgWidth: 412,
     avgHeight: 2024,
-    watercourse: 'Prof. Elena Cascade',
-    location: 'Academic Publishers, London'
+    watercourse: 'Prof. Anjali Kulkarni',
+    location: 'Indian Academy of Sciences, Bengaluru'
   },
   {
     id: '4',
     type: 'Travel Guide',
-    title: 'World\'s Most Beautiful Waterfalls',
+    title: 'Exploring India’s Hidden Waterfalls',
     avgWidth: 288,
     avgHeight: 2023,
-    watercourse: 'Adventure Collective',
-    location: 'Globe Trekker Books, Sydney'
+    watercourse: 'Lonely Planet India Team',
+    location: 'Lonely Planet India, Mumbai'
   },
   {
     id: '5',
     type: 'Historical',
-    title: 'Legends of the Falling Waters',
+    title: 'Myths & Legends of Indian Waterfalls',
     avgWidth: 195,
     avgHeight: 2021,
-    watercourse: 'Dr. James Torrent',
-    location: 'Heritage Publications, Edinburgh'
+    watercourse: 'Dr. Kavita Deshpande',
+    location: 'Rupa Publications, New Delhi'
   },
   {
     id: '6',
     type: 'Children\'s Book',
-    title: 'Wally the Waterfall\'s Adventure',
+    title: 'Chintu and the Talking Jharna',
     avgWidth: 32,
     avgHeight: 2024,
-    watercourse: 'Emma Springs',
-    location: 'Young Readers Press, Toronto'
+    watercourse: 'Priya Nair',
+    location: 'Tulika Books, Chennai'
   }
 ];
-
 const Books = () => {
   return (
     <div className="min-h-screen">
