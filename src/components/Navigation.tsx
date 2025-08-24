@@ -24,19 +24,18 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const navLinks = [
-    { to: "/tallest/overall-height", label: "Tallest - Overall Height" },
-    { to: "/tallest/single-drop", label: "Tallest - Single Drop" },
-    { to: "/tallest/free-falling", label: "Tallest - Free-falling" },
-    { to: "/largest/average-width", label: "Largest - Average Width" },
-    { to: "/largest/average-volume", label: "Largest - Average Volume" },
-    { to: "/largest/volume-no-rapids", label: "Largest - Volume (no Rapids)" },
-    { to: "/largest/volume-exist", label: "Largest - Volume (still exist)" },
-    { to: "/Recently_add", label: "Recently Updates" },
-    { to: "/countries", label: "Browse by Country" },
+    // { to: "/tallest/overall-height", label: "Tallest - Overall Height" },
+    // { to: "/tallest/single-drop", label: "Tallest - Single Drop" },
+    // { to: "/tallest/free-falling", label: "Tallest - Free-falling" },
+    // { to: "/largest/average-width", label: "Largest - Average Width" },
+    // { to: "/largest/average-volume", label: "Largest - Average Volume" },
+    // { to: "/largest/volume-no-rapids", label: "Largest - Volume (no Rapids)" },
+    // { to: "/largest/volume-exist", label: "Largest - Volume (still exist)" },
+    { to: "/countries", label: "Browse by State" },
+    { to: "/Recently_add", label: "Recently Updates" },    
     { to: "/blog", label: "Blog" },
-    { to: "/books", label: "Books" },
+    { to: "/books", label: "Materials" },
     { to: "/contact", label: "Contact" },
-    { to: "/help", label: "Help" },
   ];
 
   return (
