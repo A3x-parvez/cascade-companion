@@ -2,78 +2,101 @@ import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import WaterfallTable from '@/components/WaterfallTable';
-import { dummyWaterfalls } from '@/data/waterfallData'; // import the hook // Import the new hook
+import { dummyWaterfalls } from '@/data/waterfallData';
 import { Globe2, ChevronDown } from 'lucide-react';
 
-
 const States = () => {
-  // Use the new custom hook to get live, processed data
   const { isLoading, error, waterfallsByState } = dummyWaterfalls();
   const [activeState, setActiveState] = useState<string | null>(null);
 
-  // When data loads, open the first state in the list by default
   useEffect(() => {
-    if (waterfallsByState) {
-      const firstState = Object.keys(waterfallsByState)[0];
-      if (firstState) {
-        setActiveState(firstState);
-      }
+  if (waterfallsByState) {
+    const sortedStates = Object.keys(waterfallsByState).sort((a, b) =>
+      a.localeCompare(b)
+    );
+    if (sortedStates.length > 0) {
+      setActiveState(sortedStates[0]); // open alphabetically first state
     }
-  }, [waterfallsByState]);
+  }
+}, [waterfallsByState]);
 
   const handleToggle = (stateName: string) => {
     setActiveState(activeState === stateName ? null : stateName);
   };
 
   if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center"><p>Loading waterfalls...</p></div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-700/30 via-emerald-200/40 to-teal-500/30 backdrop-blur-lg">
+        <p className="text-black text-lg">Loading waterfalls...</p>
+      </div>
+    );
   }
   if (error) {
-    return <div className="min-h-screen flex items-center justify-center"><p>Error: {error}</p></div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-700/30 via-emerald-200/40 to-teal-500/30 backdrop-blur-lg">
+        <p className="text-red-600 text-lg">Error: {error}</p>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <main className="pt-20 pb-16 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="mb-8">
-            <div className="flex items-center mb-4">
-              <Globe2 className="w-8 h-8 text-blue-600 mr-3" />
-              <h1 className="text-4xl font-bold">Browse Waterfalls by State</h1>
-            </div>
-            <p className="text-lg text-gray-600">
-              Explore magnificent waterfalls organized by their geographic locations around India.
-            </p>
+  <div className="min-h-screen bg-background">
+    <Navigation />
+
+    <main className="pt-24 pb-16 px-4">
+      <div className="container mx-auto max-w-7xl">
+        {/* Page Heading */}
+        <div className="mb-8">
+          <div className="flex items-center mb-4">
+            <Globe2 className="w-8 h-8 text-black mr-3 drop-shadow" />
+            <h1 className="text-4xl font-bold text-black drop-shadow-lg">
+              Browse Waterfalls by State
+            </h1>
           </div>
-          
-          <div className="space-y-4">
-            {Object.entries(waterfallsByState).sort(([a], [b]) => a.localeCompare(b)).map(([state, waterfalls]) => (
-              <div key={state} className="border border-gray-200 rounded-lg">
-                <h2 
-                  className="text-2xl font-bold p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50"
+          <p className="text-lg text-black/80">
+            Explore magnificent waterfalls organized by their geographic locations around India.
+          </p>
+        </div>
+
+        {/* States Accordion */}
+        <div className="space-y-4">
+          {Object.entries(waterfallsByState)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([state, waterfalls]) => (
+              <div
+                key={state}
+                className="rounded-xl border border-black/20 shadow-lg bg-white/10 backdrop-blur-md"
+              >
+                <h2
+                  className="text-2xl font-semibold p-4 flex justify-between items-center cursor-pointer hover:bg-black/5 text-black"
                   onClick={() => handleToggle(state)}
                 >
                   <span>{state}</span>
-                  <ChevronDown 
-                    className={`transition-transform duration-300 ${activeState === state ? 'rotate-180' : ''}`} 
+                  <ChevronDown
+                    className={`transition-transform duration-300 ${
+                      activeState === state ? 'rotate-180' : ''
+                    } text-black`}
                   />
                 </h2>
-                <div 
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${activeState === state ? 'max-h-screen' : 'max-h-0'}`}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    activeState === state ? 'max-h-screen' : 'max-h-0'
+                  }`}
                 >
-                  <div className="p-4 border-t border-gray-200">
+                  <div className="p-4 border-t border-black/20">
                     <WaterfallTable waterfalls={waterfalls} />
                   </div>
                 </div>
               </div>
             ))}
-          </div>
         </div>
-      </main>
-      <Footer />
-    </div>
-  );
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+);
+
 };
 
 export default States;

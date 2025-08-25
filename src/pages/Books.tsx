@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { FileText, BookOpen } from 'lucide-react'; // Using a more relevant icon
+import { FileText, BookOpen } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-// Define a type for our material structure to match the API
 interface Material {
   id: string;
   title: string;
@@ -12,94 +12,83 @@ interface Material {
 }
 
 const Materials = () => {
-  // State to store the materials fetched from the API
   const [materials, setMaterials] = useState<Material[]>([]);
-  // State to handle loading status
   const [loading, setLoading] = useState(true);
-  // State to handle any potential errors
   const [error, setError] = useState<string | null>(null);
 
-  // useEffect hook to fetch data when the component mounts
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
-        // Read the API URL and Key from your .env.local file
         const apiBaseUrl = import.meta.env.VITE_API_URL;
         const apiKey = import.meta.env.VITE_API_KEY;
 
-        if (!apiBaseUrl || !apiKey) {
-          throw new Error("API URL or Key is not configured in your .env.local file.");
-        }
+        if (!apiBaseUrl || !apiKey) throw new Error("API URL or Key is not configured.");
         
         const response = await fetch(`${apiBaseUrl}/api/v1/materials`, {
-          headers: {
-            'X-API-Key': apiKey,
-          },
+          headers: { 'X-API-Key': apiKey },
         });
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data: Material[] = await response.json();
-        setMaterials(data); // Update state with the fetched materials
+        setMaterials(data);
       } catch (e: any) {
         setError(e.message);
-        console.error("Failed to fetch materials:", e);
       } finally {
-        setLoading(false); // Set loading to false once the fetch is complete
+        setLoading(false);
       }
     };
-
     fetchMaterials();
-  }, []); // The empty dependency array [] ensures this effect runs only once
+  }, []);
 
-  // Show a loading message while fetching data
-  if (loading) {
-    return (
-      <div className="min-h-screen flex justify-center items-center">
-        <p>Loading materials...</p>
-      </div>
-    );
-  }
+  if (loading) return (
+    <div className="min-h-screen flex justify-center items-center">
+      <p className="text-gray-700 text-lg">Loading materials...</p>
+    </div>
+  );
 
-  // Show an error message if the fetch fails
-  if (error) {
-    return (
-      <div className="min-h-screen flex justify-center items-center">
-        <p className="text-red-500">Error: {error}</p>
-      </div>
-    );
-  }
+  if (error) return (
+    <div className="min-h-screen flex justify-center items-center">
+      <p className="text-red-500 text-lg">Error: {error}</p>
+    </div>
+  );
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       <Navigation />
       <main className="pt-20 pb-16 px-4">
         <div className="container mx-auto max-w-5xl">
-          <div className="mb-12">
-            <div className="flex items-center mb-4">
-              <BookOpen className="w-8 h-8 text-blue-600 mr-3" />
-              <h1 className="text-4xl font-bold">Materials & Resources</h1>
+          
+          {/* Header */}
+          <div className="mb-12 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start mb-4">
+              <BookOpen className="w-10 h-10 text-blue-600 mr-3" />
+              <h1 className="text-4xl font-bold text-gray-900">Materials & Resources</h1>
             </div>
-            <p className="text-lg text-gray-600">
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto md:mx-0">
               A collection of guides, checklists, and research documents available for viewing.
             </p>
           </div>
           
-          <div className="space-y-4">
+          {/* Material Cards */}
+          <div className="space-y-6">
             {materials.length > 0 ? (
-              materials.map((material) => {
-                // Construct the full URL to the PDF file
+              materials.map((material, index) => {
                 const pdfUrl = `${import.meta.env.VITE_API_URL}/media/${material.pdf_id}`;
-                
                 return (
-                  <div key={material.id} className="bg-white border border-gray-200 rounded-lg p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div className="flex-grow">
-                      <h2 className="text-xl font-bold text-gray-900 mb-2">
+                  <motion.div
+                    key={material.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-emerald-500/10 border border-gray-200 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="flex-grow max-w-full">
+                      <h2 className="text-2xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors break-words">
                         {material.title}
                       </h2>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 leading-relaxed break-words whitespace-pre-line">
                         {material.description}
                       </p>
                     </div>
@@ -107,12 +96,12 @@ const Materials = () => {
                       href={pdfUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                      className="flex-shrink-0 inline-flex items-center justify-center px-5 py-2 text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow"
                     >
                       <FileText className="w-5 h-5 mr-2" />
                       View / Download PDF
                     </a>
-                  </div>
+                  </motion.div>
                 );
               })
             ) : (

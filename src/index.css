@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Waterfall Design System - All colors in HSL */
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 200 50% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 200 50% 15%;
+      --page-background: linear-gradient(
+      to bottom right,
+      hsl(160, 40%, 96%),  /* light seafoam */
+      hsl(165, 50%, 94%),  /* creamy aqua */
+      hsl(170, 55%, 92%)   /* soft teal tint */
+    );
+    --background: 160 30% 90%;   /* soft aqua */
+    --foreground: 190 40% 20%;   /* deep teal text */
+
+    --card: 160 25% 95%;         
+    --card-foreground: 190 40% 20%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 200 50% 15%;
@@ -36,44 +40,54 @@ All colors MUST be HSL.
     --input: 165 25% 90%;
     --ring: 200 95% 45%;
 
-    /* Custom waterfall theme variables */
+    /* Waterfall custom */
     --ocean-deep: 205 100% 15%;
     --ocean-light: 200 85% 65%;
     --forest-deep: 165 70% 35%;
     --forest-light: 165 50% 75%;
     --mist: 200 30% 95%;
     --splash: 190 100% 85%;
-    
+
     /* Gradients */
-    --gradient-ocean: linear-gradient(135deg, hsl(var(--ocean-deep)), hsl(var(--primary)));
-    --gradient-forest: linear-gradient(135deg, hsl(var(--forest-deep)), hsl(var(--forest-light)));
-    --gradient-mist: linear-gradient(180deg, hsl(var(--mist)), transparent);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--ocean-deep) / 0.9), hsl(var(--forest-deep) / 0.8));
-    
+    --gradient-ocean: linear-gradient(
+      135deg, 
+      hsl(var(--ocean-deep)), 
+      hsl(var(--primary))
+    );
+    --gradient-forest: linear-gradient(
+      135deg, 
+      hsl(var(--forest-deep)), 
+      hsl(var(--forest-light))
+    );
+    --gradient-mist: linear-gradient(
+      180deg, 
+      hsl(var(--mist)), 
+      transparent
+    );
+    --gradient-hero: linear-gradient(
+      135deg, 
+      hsl(var(--ocean-deep) / 0.9), 
+      hsl(var(--forest-deep) / 0.8)
+    );
+
     /* Shadows */
     --shadow-water: 0 10px 40px -10px hsl(var(--ocean-deep) / 0.3);
     --shadow-card: 0 4px 20px -2px hsl(var(--ocean-deep) / 0.1);
-    
+
     /* Animations */
     --flow-duration: 3s;
     --ripple-duration: 2s;
 
     --radius: 0.5rem;
 
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -105,6 +119,8 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Sidebar Dark */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -114,75 +130,76 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    backdrop-filter: blur(4px);
   }
 }
 
+/* Components */
 @layer components {
-  /* Custom component styles using design system */
   .waterfall-card {
     @apply bg-card rounded-lg shadow-[var(--shadow-card)] border border-border/50 overflow-hidden transition-all duration-300 hover:shadow-[var(--shadow-water)] hover:-translate-y-1;
   }
-  
+
   .hero-gradient {
-    background: var(--gradient-hero);
+    background: var(--gradient-hero), url('/mnt/data/hero-waterfall.jpg') center/cover no-repeat;
   }
-  
+
   .ocean-gradient {
     background: var(--gradient-ocean);
   }
-  
+
   .forest-gradient {
     background: var(--gradient-forest);
   }
-  
+
   .mist-overlay {
     background: var(--gradient-mist);
   }
-  
+
   .flow-animation {
     animation: flow var(--flow-duration) ease-in-out infinite;
   }
-  
+
   .ripple-animation {
     animation: ripple var(--ripple-duration) ease-out infinite;
   }
 }
 
+/* Utilities */
 @layer utilities {
   .text-ocean-deep {
     color: hsl(var(--ocean-deep));
   }
-  
+
   .text-ocean-light {
     color: hsl(var(--ocean-light));
   }
-  
+
   .text-forest-deep {
     color: hsl(var(--forest-deep));
   }
-  
+
   .text-forest-light {
     color: hsl(var(--forest-light));
   }
-  
+
   .bg-mist {
     background-color: hsl(var(--mist));
   }
-  
+
   .bg-splash {
     background-color: hsl(var(--splash));
   }
 }
 
+/* Animations */
 @keyframes flow {
   0%, 100% {
     transform: translateX(0) scale(1);
@@ -203,4 +220,10 @@ All colors MUST be HSL.
     transform: scale(1.4);
     opacity: 0;
   }
+}
+
+/* Footer */
+footer {
+  background-color: hsl(var(--ocean-deep) / 0.9);
+  color: hsl(var(--mist));
 }

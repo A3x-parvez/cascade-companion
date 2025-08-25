@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, Waves } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import heroVideo from '@/assets/hero-video.mp4';
 import heroImage from '@/assets/hero-waterfall.jpg';
 import CountUp from 'react-countup'; // Using CountUp for a better visual
 
@@ -68,6 +69,19 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
+      {/* Background Video
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster={heroImage}
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <source src={heroVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video> */}
+      
       {/* Gradient Overlay */}
       <div  className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
       
@@ -98,7 +112,7 @@ const Hero = () => {
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
               />
             </div>
-            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-600 transition-colors px-8 h-12 text-white" onClick={handleSearch}>
+            <Button size="lg" className="bg-cyan-500 hover:bg-cyan-700 transition-colors px-8 h-12 text-black" onClick={handleSearch}>
               <Search className="w-5 h-5 mr-2" />
               Search
             </Button>

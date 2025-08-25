@@ -10,27 +10,25 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Waves,
   ChevronDown,
-  Book,
-  MessageCircle,
+  Library,
+  PenSquare,
   HelpCircle,
-  TrendingUp,
+  Database,
   Expand,
   Globe2,
-  Menu,
+  PanelLeft,
+  Phone,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
+
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    // { to: "/tallest/overall-height", label: "Tallest - Overall Height" },
-    // { to: "/tallest/single-drop", label: "Tallest - Single Drop" },
-    // { to: "/tallest/free-falling", label: "Tallest - Free-falling" },
-    // { to: "/largest/average-width", label: "Largest - Average Width" },
-    // { to: "/largest/average-volume", label: "Largest - Average Volume" },
-    // { to: "/largest/volume-no-rapids", label: "Largest - Volume (no Rapids)" },
-    // { to: "/largest/volume-exist", label: "Largest - Volume (still exist)" },
     { to: "/countries", label: "Browse by State" },
     { to: "/Recently_add", label: "Recently Updates" },    
     { to: "/blog", label: "Blog" },
@@ -38,8 +36,31 @@ const Navigation = () => {
     { to: "/contact", label: "Contact" },
   ];
 
+  // Dynamically set classes based on the current page
+  const navClasses = cn(
+    "fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b shadow-lg transition-colors duration-300",
+    "bg-gradient-to-r from-teal-600/30 via-emerald-500/20 to-teal-400/30 border-teal-200/40"
+    // {
+    //   "bg-gradient-to-r from-teal-600/30 via-emerald-500/20 to-teal-400/30 border-teal-200/40": isHomePage,
+    //   "bg-stone-50/80 border-stone-200/50": !isHomePage
+    // }
+  );
+
+  const textClass = isHomePage ? "text-white" : "text-black";
+  const buttonClass = cn(
+    "text-base h-9 text-bold",
+    isHomePage
+      ? "text-white hover:bg-white/10 hover:text-white"
+      : "text-foreground hover:bg-black/5"
+  );
+  const mobileTriggerClass = cn(
+    isHomePage 
+      ? "text-white hover:bg-white/10 hover:text-white"
+      : "text-foreground hover:bg-black/5"
+  );
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border/10">
+    <nav className={navClasses}>
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -47,84 +68,51 @@ const Navigation = () => {
             <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
               <Waves className="w-5 h-5 text-primary-foreground" />
             </div>
-            <h1 className="text-md font-bold text-foreground">India Waterfall Database</h1>
+            <h1 className={cn("text-md font-bold", textClass)}>India Waterfall Database</h1>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="hover:bg-accent text-sm h-9">
-                  <TrendingUp className="w-4 h-4 mr-2" />
+                <Button variant="ghost" className={buttonClass}>
+                  <Database className="w-4 h-4 mr-1" />
                   Databases
                   <ChevronDown className="w-4 h-4 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-48 bg-card/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
+              <DropdownMenuContent className="w-48 bg-background/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
                 <DropdownMenuItem asChild>
                   <Link to="/countries">Browse by State</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/Recently_add">Recently Updates</Link>
                 </DropdownMenuItem>
-                {/* <DropdownMenuItem asChild>
-                  <Link to="/tallest/free-falling">Free-falling Drops</Link>
-                </DropdownMenuItem> */}
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* <DropdownMenu modal={false}>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="hover:bg-accent text-sm h-9">
-                  <Expand className="w-4 h-4 mr-2" />
-                  Largest
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-card/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
-                <DropdownMenuItem asChild>
-                  <Link to="/largest/average-width">By Average Width</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/largest/average-volume">By Average Volume</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/largest/volume-no-rapids">By Volume (no Rapids)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/largest/volume-exist">By Volume (still exist)</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu> */}
-
-            {/* <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/countries"><Globe2 className="w-4 h-4 mr-2" />Browse by State</Link>
-            </Button> */}
-            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/blog"><MessageCircle className="w-4 h-4 mr-2" />Blog</Link>
+            <Button variant="ghost" className={buttonClass} asChild>
+              <Link to="/blog"><PenSquare className="w-4 h-4 mr-1" />Blog</Link>
             </Button>
-            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/books"><Book className="w-4 h-4 mr-2" />Materials</Link>
+            <Button variant="ghost" className={buttonClass} asChild>
+              <Link to="/books"><Library className="w-4 h-4 mr-1" />Materials</Link>
             </Button>
-            <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/contact">Contact</Link>
+            <Button variant="ghost" className={buttonClass} asChild>
+              <Link to="/contact"><Phone className="w-4 h-4 mr-1" />Contact</Link>
             </Button>
-            {/* <Button variant="ghost" className="hover:bg-accent text-sm h-9" asChild>
-              <Link to="/help"><HelpCircle className="w-4 h-4 mr-2" />Help</Link>
-            </Button> */}
           </div>
 
           {/* Mobile Menu */}
           <div className="lg:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Menu className="w-5 h-5" />
+                <Button variant="ghost" size="sm" className={mobileTriggerClass}>
+                  <PanelLeft className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="left"
-                className="w-72 p-0 border-r border-border/20 bg-background/95 backdrop-blur-lg"
+                className="w-72 p-0 border-r border-stone-200/50 bg-stone-50/95 backdrop-blur-lg"
               >
                 <div className="flex flex-col h-full">
                   {/* Header */}
@@ -132,7 +120,7 @@ const Navigation = () => {
                     <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
                       <Waves className="w-5 h-5 text-primary-foreground" />
                     </div>
-                    <h2 className="font-semibold text-lg">India Waterfalls</h2>
+                    <h2 className="font-semibold text-lg text-foreground">India Waterfalls</h2>
                   </div>
 
                   {/* Links */}
@@ -166,5 +154,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-

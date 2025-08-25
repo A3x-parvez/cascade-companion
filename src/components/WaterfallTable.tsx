@@ -12,12 +12,12 @@ interface Waterfall {
   id: string;
   type: string;
   name: string;
-  no_of_drops:string;
+  no_of_drops: string;
   avgWidth: string;
   avgHeight: string;
   watercourse: string;
   location: string;
-  coordinate:string;
+  coordinate: string;
 }
 
 interface WaterfallTableProps {
@@ -33,32 +33,31 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
       )}
       <div className="rounded-md border border-border bg-card">
         <Table>
-          <TableHeader>
+          <TableHeader className="bg-emerald-500/20">
             <TableRow>
-              
-              <TableHead className="font-semibold">Waterfall Name</TableHead>
-              <TableHead className="font-semibold">Width</TableHead>
-              <TableHead className="font-semibold">Height</TableHead>
-              <TableHead className="font-semibold">No of drop</TableHead>
-              <TableHead className="font-semibold">Course Name</TableHead>
-              <TableHead className="font-semibold">Location</TableHead>
-              <TableHead className="font-semibold">Coordinate</TableHead>
-              <TableHead className="font-semibold">Remark</TableHead>
+              <TableHead className="font-bold text-black">Waterfall Name</TableHead>
+              <TableHead className="font-bold text-black">Width</TableHead>
+              <TableHead className="font-bold text-black">Height</TableHead>
+              <TableHead className="font-bold text-black">No of Drops</TableHead>
+              <TableHead className="font-bold text-black">Course Name</TableHead>
+              <TableHead className="font-bold text-black">Location</TableHead>
+              <TableHead className="font-bold text-black">Coordinate</TableHead>
+              <TableHead className="font-bold text-black">Remark</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {waterfalls.map((waterfall) => (
               <TableRow key={waterfall.id} className="hover:bg-accent/50">
-                <TableCell className="text-primary hover:underline cursor-pointer">
+                <TableCell className="font-bold text-black hover:underline cursor-pointer">
                   {waterfall.name}
                 </TableCell>
-                <TableCell>{waterfall.avgWidth}</TableCell>
-                <TableCell>{waterfall.avgHeight}</TableCell>
-                <TableCell>{waterfall.no_of_drops}</TableCell>
-                <TableCell>{waterfall.watercourse}</TableCell>
-                <TableCell>{waterfall.location}</TableCell>
-                <TableCell>{waterfall.coordinate}</TableCell>
-                <TableCell className="font-medium">{waterfall.type}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.avgWidth}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.avgHeight}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.no_of_drops}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.watercourse}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.location}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.coordinate}</TableCell>
+                <TableCell className="font-bold text-black">{waterfall.type}</TableCell>
               </TableRow>
             ))}
           </TableBody>
