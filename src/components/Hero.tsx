@@ -65,23 +65,26 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      {/* <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
-      />
+      /> */}
       
       {/* Background Video */}
-      {/* <video
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+      <video
         autoPlay
         loop
         muted
         playsInline
         poster={heroImage}
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+        className="w-full h-full object-cover m-0 p-0 border-0 outline-none"
       >
         <source src={heroVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
+      </video>
+    </div>
+
+
       
       {/* Gradient Overlay */}
       <div  className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
