@@ -58,7 +58,8 @@ const Hero = () => {
 
   // Corrected and simplified this function
   const handleStateClick = (state: string) => {
-    navigate(`/search?q=${encodeURIComponent(state)}`);
+    // navigate(`/search?q=${encodeURIComponent(state)}`);
+    setSearchQuery(state);
   };
 
   return (
@@ -69,8 +70,8 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       
-      {/* Background Video
-      <video
+      {/* Background Video */}
+      {/* <video
         autoPlay
         loop
         muted
@@ -87,10 +88,10 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="flex items-center justify-center mb-6">
-          <Waves className="w-12 h-12 text-white mr-4" />
+        <div className="mb-6">
+          {/* <Waves className="w-12 h-12 text-white mr-4" /> */}
           <h1 className="text-5xl md:text-7xl font-bold text-white">
-            India Waterfall 
+            India Waterfall
             <span className="block text-4xl md:text-6xl text-cyan-300">Database</span>
           </h1>
         </div>

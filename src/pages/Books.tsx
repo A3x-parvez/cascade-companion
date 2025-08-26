@@ -42,10 +42,22 @@ const Materials = () => {
   }, []);
 
   if (loading) return (
-    <div className="min-h-screen flex justify-center items-center">
-      <p className="text-gray-700 text-lg">Loading materials...</p>
-    </div>
-  );
+        <div className="min-h-screen flex justify-center items-center bg-background">
+          <div className="flex flex-col items-center space-y-4">
+            {/* Loader Animation */}
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce"></div>
+            </div>
+
+            {/* Loading Text */}
+            <p className="text-lg font-medium text-gray-700 animate-pulse">
+              Loading materials...
+            </p>
+          </div>
+        </div>
+      );
 
   if (error) return (
     <div className="min-h-screen flex justify-center items-center">
@@ -54,7 +66,7 @@ const Materials = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Navigation />
       <main className="pt-20 pb-16 px-4">
         <div className="container mx-auto max-w-5xl">
@@ -82,8 +94,9 @@ const Materials = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-emerald-500/10 border border-gray-200 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                    className="bg-emerald-500/10 border border-gray-200 rounded-xl p-6 flex flex-col justify-between gap-4 shadow-md hover:shadow-2xl hover:scale-105 transition-all duration-300"
                   >
+                    {/* Content */}
                     <div className="flex-grow max-w-full">
                       <h2 className="text-2xl font-semibold text-gray-900 mb-2 hover:text-blue-600 transition-colors break-words">
                         {material.title}
@@ -92,16 +105,21 @@ const Materials = () => {
                         {material.description}
                       </p>
                     </div>
-                    <a 
-                      href={pdfUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 inline-flex items-center justify-center px-5 py-2 text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow"
-                    >
-                      <FileText className="w-5 h-5 mr-2" />
-                      View / Download PDF
-                    </a>
+
+                    {/* Button at bottom center */}
+                    <div className="w-full flex justify-center mt-4">
+                      <a 
+                        href={`${import.meta.env.VITE_API_URL}/media/${material.pdf_id}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-5 py-2 text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all shadow"
+                      >
+                        <FileText className="w-5 h-5 mr-2" />
+                        View / Download PDF
+                      </a>
+                    </div>
                   </motion.div>
+
                 );
               })
             ) : (

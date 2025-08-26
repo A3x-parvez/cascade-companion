@@ -48,52 +48,95 @@ const Blog = () => {
     fetchBlogs();
   }, []);
 
-  if (loading) return <div className="min-h-screen flex justify-center items-center"><p>Loading posts...</p></div>;
-  if (error) return <div className="min-h-screen flex justify-center items-center"><p className="text-red-500">Error: {error}</p></div>;
+  if (loading)
+    return (
+        <div className="min-h-screen flex justify-center items-center bg-background">
+          <div className="flex flex-col items-center space-y-4">
+            {/* Loader Animation */}
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce"></div>
+            </div>
+
+            {/* Loading Text */}
+            <p className="text-lg font-medium text-gray-700 animate-pulse">
+              Loading posts...
+            </p>
+          </div>
+        </div>
+      );
+
+
+  if (error)
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-background">
+        <p className="text-lg text-red-500">Error: {error}</p>
+      </div>
+    );
 
   return (
-    <div className="min-h-screen">
-      <Navigation/>
+    <div className="min-h-screen bg-background text-gray-900">
+      <Navigation />
       <main className="pt-20 pb-16 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <div className="mb-12">
             <div className="flex items-center mb-4">
-              <MessageCircle className="w-8 h-8 text-blue-600 mr-3" />
+              <MessageCircle className="w-8 h-8 text-emerald-600 mr-3" />
               <h1 className="text-4xl font-bold">Waterfall Blog</h1>
             </div>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-700">
               Stories, science, and discoveries from the world of waterfalls.
             </p>
           </div>
-          
-          <div className="space-y-8">
+
+          <div className="space-y-10">
             {blogs.map((post) => {
               const apiBaseUrl = import.meta.env.VITE_API_URL;
-              
-              const mediaUrl = post.image_id 
-                ? `${apiBaseUrl}/media/${post.image_id}` 
-                : (post.video_id ? `${apiBaseUrl}/media/${post.video_id}` : null);
+              const mediaUrl = post.image_id
+                ? `${apiBaseUrl}/media/${post.image_id}`
+                : post.video_id
+                ? `${apiBaseUrl}/media/${post.video_id}`
+                : null;
 
               return (
-                <article key={post.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                  {/* --- THIS SECTION IS UPDATED --- */}
-                  {mediaUrl && post.image_id && 
-                    <img src={mediaUrl} alt={post.title} className="w-full h-64 object-contain rounded-md mb-4 bg-black" />}
-                  
-                  {mediaUrl && post.video_id && 
-                    <video src={mediaUrl} className="w-full h-64 object-contain rounded-md mb-4 bg-black" controls />}
-                  {/* --- END OF UPDATE --- */}
-                  
-                  <h2 className="text-2xl font-bold text-gray-900 mb-3">{post.title}</h2>
-                  <p className="text-gray-700 mb-4 leading-relaxed">{post.description}</p>
+                <article
+                  key={post.id}
+                  className="bg-white border border-gray-300 rounded-2xl p-6 shadow-md hover:shadow-2xl transition-shadow"
+                >
+                  {/* IMAGE */}
+                  {mediaUrl && post.image_id && (
+                    <img
+                      src={mediaUrl}
+                      alt={post.title}
+                      className="w-full min-h-[400px] max-h-[400px] object-contain rounded-lg mb-4 bg-black"
+                    />
+                  )}
+
+                  {/* VIDEO */}
+                  {mediaUrl && post.video_id && (
+                    <div className="w-full bg-black rounded-lg mb-4 flex justify-center items-center">
+                      <video
+                        src={mediaUrl}
+                        className="w-full min-h-[400px] max-h-[400px] object-contain rounded-lg"
+                        controls
+                      />
+                    </div>
+                  )}
+
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-800 leading-relaxed">
+                    {post.description}
+                  </p>
                 </article>
               );
             })}
           </div>
         </div>
-
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

@@ -26,10 +26,22 @@ const States = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-700/30 via-emerald-200/40 to-teal-500/30 backdrop-blur-lg">
-        <p className="text-black text-lg">Loading waterfalls...</p>
-      </div>
-    );
+        <div className="min-h-screen flex justify-center items-center bg-background">
+          <div className="flex flex-col items-center space-y-4">
+            {/* Loader Animation */}
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-bounce"></div>
+            </div>
+
+            {/* Loading Text */}
+            <p className="text-lg font-medium text-gray-700 animate-pulse">
+              Loading waterfalls...
+            </p>
+          </div>
+        </div>
+      );
   }
   if (error) {
     return (

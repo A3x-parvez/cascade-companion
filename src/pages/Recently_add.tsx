@@ -18,6 +18,36 @@ interface Waterfall {
   longitude: string; // Added longitude
 }
 
+// Skeleton Table Component
+const SkeletonTable = () => {
+  return (
+    <div className="overflow-x-auto rounded-lg shadow-2xl shadow-black/20 border border-gray-300 bg-white animate-pulse">
+      <table className="w-full">
+        <thead className="bg-emerald-500/20">
+          <tr>
+            {Array.from({ length: 10 }).map((_, idx) => (
+              <th key={idx} className="px-6 py-3">
+                <div className="h-4 w-24 bg-gray-300 rounded"></div>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {Array.from({ length: 6 }).map((_, rowIdx) => (
+            <tr key={rowIdx} className="divide-x divide-gray-200">
+              {Array.from({ length: 10 }).map((_, colIdx) => (
+                <td key={colIdx} className="px-6 py-4">
+                  <div className="h-4 w-20 bg-gray-200 rounded"></div>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 // Helper function to extract the date from a MongoDB ObjectId
 const getDateFromObjectId = (objectId: string): string => {
   try {
@@ -69,114 +99,124 @@ const RecentlyAddedWaterfalls = () => {
     fetchWaterfalls();
   }, []);
 
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center"><p>Loading waterfalls...</p></div>;
-  }
-  if (error) {
-    return <div className="min-h-screen flex items-center justify-center"><p>Error: {error}</p></div>;
-  }
-
   return (
-  <div className="min-h-screen">
-    <Navigation />
-    <main className="pt-20 pb-16 px-4">
-      <div className="container mx-auto max-w-9xl">
+    <div className="min-h-screen">
+      <Navigation />
+      <main className="pt-20 pb-16 px-4">
+        <div className="container mx-auto max-w-9xl">
 
-        {/* Page Header */}
-        <div className="mb-8">
-          <div className="flex items-center mb-4">
-            <Clock className="w-8 h-8 text-blue-600 mr-3" />
-            <h1 className="text-4xl font-bold">Recently Added Waterfalls</h1>
+          {/* Page Header */}
+          <div className="mb-8">
+            <div className="flex items-center mb-4">
+              <Clock className="w-8 h-8 text-blue-600 mr-3" />
+              <h1 className="text-4xl font-bold">Recently Added Waterfalls</h1>
+            </div>
+            <p className="text-lg text-gray-600">
+              Explore the latest waterfalls added to our database. Sorted by date for your convenience.
+            </p>
           </div>
-          <p className="text-lg text-gray-600">
-            Explore the latest waterfalls added to our database. Sorted by date for your convenience.
-          </p>
-        </div>
 
-        {/* Table Section */}
-        <div className="overflow-x-auto rounded-lg shadow-2xl shadow-black/20 border border-gray-300 bg-white">
-          <table className="w-full bg-white">
-            <thead className="bg-emerald-500/20">
-            {/* <thead className="bg-teal-500/30"> */}
-              <tr>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Date Added
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  No of Drop
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Height
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Width
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Course Name
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  State
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Location
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Coordinates
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
-                  Remarks
-                </th>
-              </tr>
-            </thead>
+          {/* Table Section */}
+          {loading ? (
+            <SkeletonTable />
+          ) : error ? (
+            <div className="text-center py-16">
+              <h2 className="text-2xl font-semibold text-red-500">Error</h2>
+              <p className="text-muted-foreground mt-2">{error}</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto rounded-lg shadow-2xl shadow-black/20 border border-gray-300 bg-white">
+              <table className="w-full bg-white">
+                <thead className="bg-emerald-500/20">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Date Added
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      No of Drop
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Height
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Width
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Course Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      State
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Location
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Coordinates
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-bold text-gray-900 uppercase tracking-wider">
+                      Remarks
+                    </th>
+                  </tr>
+                </thead>
 
-            <tbody className="divide-y divide-gray-200">
-              {waterfalls.map((waterfall) => (
-                <tr key={waterfall.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {getDateFromObjectId(waterfall.id)}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.waterfallname}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.no_of_drops}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.height}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.width}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.course_name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.state}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.location}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.latitude && waterfall.longitude
-                      ? `${waterfall.latitude}, ${waterfall.longitude}`
-                      : 'NA'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                    {waterfall.remarks ? waterfall.remarks : 'NA'}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                <tbody className="divide-y divide-gray-200">
+                  {waterfalls.map((waterfall) => (
+                    <tr key={waterfall.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {getDateFromObjectId(waterfall.id)}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.waterfallname}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.no_of_drops}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.height}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.width}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.course_name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.state}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.location}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.latitude && waterfall.longitude ? (
+                          <a
+                            href={`https://www.google.com/maps?q=${waterfall.latitude},${waterfall.longitude}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-emerald-600 hover:underline"
+                          >
+                            {`${waterfall.latitude}, ${waterfall.longitude}`}
+                          </a>
+                        ) : (
+                          'NA'
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                        {waterfall.remarks ? waterfall.remarks : 'NA'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
-      </div>
-    </main>
-    <Footer />
-  </div>
-);
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default RecentlyAddedWaterfalls;

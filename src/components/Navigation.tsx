@@ -34,6 +34,7 @@ const Navigation = () => {
     { to: "/blog", label: "Blog" },
     { to: "/books", label: "Materials" },
     { to: "/contact", label: "Contact" },
+    { to: "/help", label: "Help" },
   ];
 
   // Dynamically set classes based on the current page
@@ -68,7 +69,7 @@ const Navigation = () => {
             <div className="w-8 h-8 ocean-gradient rounded-lg flex items-center justify-center">
               <Waves className="w-5 h-5 text-primary-foreground" />
             </div>
-            <h1 className={cn("text-md font-bold", textClass)}>India Waterfall Database</h1>
+            <h1 className={cn("text-xl font-bold", textClass)}>India Waterfall Database</h1>
           </Link>
 
           {/* Desktop Navigation */}
@@ -99,6 +100,9 @@ const Navigation = () => {
             </Button>
             <Button variant="ghost" className={buttonClass} asChild>
               <Link to="/contact"><Phone className="w-4 h-4 mr-1" />Contact</Link>
+            </Button>
+            <Button variant="ghost" className={buttonClass} asChild>
+              <Link to="/help"><HelpCircle className="w-4 h-4 mr-1" />Help</Link>
             </Button>
           </div>
 

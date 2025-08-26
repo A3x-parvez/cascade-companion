@@ -56,7 +56,14 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
                 <TableCell className="font-bold text-black">{waterfall.no_of_drops}</TableCell>
                 <TableCell className="font-bold text-black">{waterfall.watercourse}</TableCell>
                 <TableCell className="font-bold text-black">{waterfall.location}</TableCell>
-                <TableCell className="font-bold text-black">{waterfall.coordinate}</TableCell>
+                <TableCell className="font-bold text-black"><a
+                  href={`https://www.google.com/maps?q=${waterfall.coordinate}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-600 hover:underline"
+                >
+                  {waterfall.coordinate}
+                </a></TableCell>
                 <TableCell className="font-bold text-black">{waterfall.type}</TableCell>
               </TableRow>
             ))}

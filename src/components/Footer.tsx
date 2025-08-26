@@ -11,7 +11,7 @@ const exploreLinks = [
   { href: '/countries', title: 'Waterfalls by State' },
   { href: '/Recently_add', title: 'Recently Added' },
   { href: '/blog', title: 'Blog' },
-  { href: '#', title: 'Photo Gallery' },
+  { href: '/books', title: 'Materials' },
 ];
 
 const resourceLinks = [
