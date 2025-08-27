@@ -15,6 +15,7 @@ import Help from "./pages/Help";
 import SearchResults from "./pages/SearchResults";
 import RecentlyAdd from "./pages/Recently_add"; // Renamed file for consistency
 import ViewAllwaterfall from "./components/ViewAllwaterfall"; // Renamed file for consistency
+import WteroDevmark from "./pages/wtero_devmark";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,8 @@ const App = () => (
           <Route path="/help" element={<Help/>} />
 
           <Route path="/Recently_add" element={<RecentlyAdd/>} />
+
+          <Route path="/we-are-wtero" element={<WteroDevmark />} />
 
           <Route path="/ViewAllwaterfall" element={<ViewAllwaterfall/>} />
 
