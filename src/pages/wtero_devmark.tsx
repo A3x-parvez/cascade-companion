@@ -34,19 +34,19 @@ const WteroLicense = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Feather className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                    <span>
+                    <span className='text-cyan-700 font-mono'>
                       <strong className="text-gray-100">Creativity First:</strong> Every solution is crafted with innovative thinking to match the client’s brand identity.
                     </span>
                   </li>
                   <li className="flex items-start">
                     <Zap className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                    <span>
+                    <span className='text-cyan-700 font-mono'>
                       <strong className="text-gray-100">Performance Driven:</strong> Optimized websites and AI solutions ensuring speed, scalability, and a smooth experience.
                     </span>
                   </li>
                   <li className="flex items-start">
                     <ShieldCheck className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                    <span>
+                    <span className='text-cyan-700 font-mono'>
                       <strong className="text-gray-100">Trust & Quality:</strong> Delivered with secure, reliable, and future-proof technology.
                     </span>
                   </li>
