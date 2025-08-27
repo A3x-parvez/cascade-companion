@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import Materials from "./pages/Materials"; // Renamed from Books
 import Contact from "./pages/Contact";
 import AboutUs from "./pages/AboutUs";
+import MaintenancePage from "./pages/MaintenancePage";
 import SearchResults from "./pages/SearchResults";
 import RecentlyAdd from "./pages/Recently_add"; // Renamed file for consistency
 import ViewAllwaterfall from "./components/ViewAllwaterfall"; // Renamed file for consistency
@@ -45,6 +46,8 @@ const App = () => (
           <Route path="/Recently_add" element={<RecentlyAdd/>} />
 
           <Route path="/we-are-wtero" element={<WteroDevmark />} />
+
+          <Route path="/maintenance" element={<MaintenancePage />} />
 
           <Route path="/ViewAllwaterfall" element={<ViewAllwaterfall/>} />
 

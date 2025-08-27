@@ -79,7 +79,7 @@ const About = () => {
 
 
           {/* Privacy Policy */}
-          <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-8">
+          <div id="privacy" className="bg-white border border-gray-200 rounded-2xl shadow-lg p-8">
             <div className="flex items-center mb-4">
               <Shield className="w-8 h-8 text-emerald-600 mr-3" />
               <h2 className="text-2xl font-bold text-black">Privacy Policy</h2>
