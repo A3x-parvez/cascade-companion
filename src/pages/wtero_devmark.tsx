@@ -96,8 +96,7 @@ const WteroLicense = () => {
             {/* Footer Signature */}
             <div className="text-center mt-8 pt-4 border-t border-primary/20">
               <p className="text-xs text-muted-foreground">
-                This license page verifies Wtero as the creator and technology partner behind this website.  
-                Ownership and rights belong solely to the client.
+                This license page confirms Wtero as the creator and technology partner of this website. All ownership and rights are held exclusively by the client.
               </p>
             </div>
           </CardContent>
