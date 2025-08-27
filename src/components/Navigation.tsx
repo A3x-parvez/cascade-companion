@@ -34,7 +34,7 @@ const Navigation = () => {
     { to: "/blog", label: "Blog" },
     { to: "/materials", label: "Materials" },
     { to: "/contact", label: "Contact" },
-    { to: "/help", label: "Help" },
+    { to: "/about", label: "About Us" },
   ];
 
   // Dynamically set classes based on the current page
@@ -102,7 +102,7 @@ const Navigation = () => {
               <Link to="/contact"><Phone className="w-4 h-4 mr-1" />Contact</Link>
             </Button>
             <Button variant="ghost" className={buttonClass} asChild>
-              <Link to="/help"><HelpCircle className="w-4 h-4 mr-1" />Help</Link>
+              <Link to="/about"><HelpCircle className="w-4 h-4 mr-1" />About Us</Link>
             </Button>
           </div>
 

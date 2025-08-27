@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Search, Waves } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import heroVideo from '@/assets/hero-video.mp4';
+import heroVideoWebm from '@/assets/hero-video.webm';
 import heroImage from '@/assets/hero-waterfall.jpg';
 import CountUp from 'react-countup'; // Using CountUp for a better visual
 
@@ -72,17 +73,22 @@ const Hero = () => {
       
       {/* Background Video */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster={heroImage}
-        className="w-full h-full object-cover m-0 p-0 border-0 outline-none"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
-    </div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={heroImage}
+          className="w-full h-full object-cover m-0 p-0 border-0 outline-none"
+        >
+          {/* Use WebM first for faster loading */}
+          <source src={heroVideo.replace('.mp4', '.webm')} type="video/webm" />
+          {/* Fallback to MP4 if WebM not supported */}
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+      </div>
+
 
 
       

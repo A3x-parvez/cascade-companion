@@ -16,7 +16,7 @@ const exploreLinks = [
 ];
 
 const resourceLinks = [
-  { href: '#', title: 'About Us' },
+  { href: '/about', title: 'About Us' },
   { href: '/contact', title: 'Contact' },
   { href: '#', title: 'Privacy Policy' },
   { href: '#', title: 'Terms of Service' },

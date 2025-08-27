@@ -11,7 +11,7 @@ import State from "./pages/State"; // Renamed from Countries for clarity
 import Blog from "./pages/Blog";
 import Materials from "./pages/Materials"; // Renamed from Books
 import Contact from "./pages/Contact";
-import Help from "./pages/Help";
+import AboutUs from "./pages/AboutUs";
 import SearchResults from "./pages/SearchResults";
 import RecentlyAdd from "./pages/Recently_add"; // Renamed file for consistency
 import ViewAllwaterfall from "./components/ViewAllwaterfall"; // Renamed file for consistency
@@ -40,7 +40,7 @@ const App = () => (
 
           <Route path="/contact" element={<Contact/>} />
 
-          <Route path="/help" element={<Help/>} />
+          <Route path="/about" element={<AboutUs/>} />
 
           <Route path="/Recently_add" element={<RecentlyAdd/>} />
 
