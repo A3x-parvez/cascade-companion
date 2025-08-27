@@ -60,7 +60,7 @@ const WaterfallTable: React.FC<WaterfallTableProps> = ({ waterfalls, title }) =>
                   href={`https://www.google.com/maps?q=${waterfall.coordinate}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-600 hover:underline"
+                  className="hover:text-emerald-600 hover:underline"
                 >
                   {waterfall.coordinate}
                 </a></TableCell>
