@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Globe, MapPin } from 'lucide-react';
 
-const countries = [
+const states = [
   { name: 'Karnataka', count: 9, flag: 'KA', featured: 'Jog Falls' },
   { name: 'Kerala', count: 5, flag: 'KL', featured: 'Athirappilly Falls' },
   { name: 'Meghalaya', count: 6, flag: 'ML', featured: 'Nohkalikai Falls' },
@@ -31,11 +31,11 @@ const countries = [
 
 
 
-const CountryBrowser = () => {
+const StateBrowser = () => {
   return null;
 };
 
-export default CountryBrowser;
+export default StateBrowser;
 
 
 
@@ -95,7 +95,7 @@ export default CountryBrowser;
 
 
 
-// const CountryBrowser = () => {
+// const StateBrowser = () => {
 //   return (
 //     <section className="py-16 px-4 bg-mist">
 //       <div className="container mx-auto max-w-7xl">
@@ -114,7 +114,7 @@ export default CountryBrowser;
         
 //         {/* Country Grid */}
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-//           {countries.map((country) => (
+//           {states.map((state) => (
 //             <Card 
 //               key={country.name}
 //               className="waterfall-card group cursor-pointer"

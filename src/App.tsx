@@ -7,9 +7,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 // Other pages
-import Countries from "./pages/Countries"; // Renamed from Countries for clarity
+import State from "./pages/State"; // Renamed from Countries for clarity
 import Blog from "./pages/Blog";
-import Books from "./pages/Books"; // Renamed from Books
+import Materials from "./pages/Materials"; // Renamed from Books
 import Contact from "./pages/Contact";
 import Help from "./pages/Help";
 import SearchResults from "./pages/SearchResults";
@@ -31,11 +31,11 @@ const App = () => (
           <Route path="/search" element={<SearchResults />} />
 
           {/* Other routes with clean, conventional paths */}
-          <Route path="/countries" element={<Countries />} />
+          <Route path="/state" element={<State />} />
 
           <Route path="/blog" element={<Blog/>} />
 
-          <Route path="/books" element={<Books/>} />
+          <Route path="/materials" element={<Materials/>} />
 
           <Route path="/contact" element={<Contact/>} />
 

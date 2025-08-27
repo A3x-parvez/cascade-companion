@@ -29,10 +29,10 @@ const Navigation = () => {
   const isHomePage = location.pathname === '/';
 
   const navLinks = [
-    { to: "/countries", label: "Browse by State" },
+    { to: "/state", label: "Browse by State" },
     { to: "/Recently_add", label: "Recently Updates" },    
     { to: "/blog", label: "Blog" },
-    { to: "/books", label: "Materials" },
+    { to: "/materials", label: "Materials" },
     { to: "/contact", label: "Contact" },
     { to: "/help", label: "Help" },
   ];
@@ -84,7 +84,7 @@ const Navigation = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48 bg-background/90 backdrop-blur-lg border-border/20 shadow-xl z-50">
                 <DropdownMenuItem asChild>
-                  <Link to="/countries">Browse by State</Link>
+                  <Link to="/state">Browse by State</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/Recently_add">Recently Updates</Link>
@@ -96,7 +96,7 @@ const Navigation = () => {
               <Link to="/blog"><PenSquare className="w-4 h-4 mr-1" />Blog</Link>
             </Button>
             <Button variant="ghost" className={buttonClass} asChild>
-              <Link to="/books"><Library className="w-4 h-4 mr-1" />Materials</Link>
+              <Link to="/materials"><Library className="w-4 h-4 mr-1" />Materials</Link>
             </Button>
             <Button variant="ghost" className={buttonClass} asChild>
               <Link to="/contact"><Phone className="w-4 h-4 mr-1" />Contact</Link>

@@ -195,7 +195,7 @@ const RecentlyAddedWaterfalls = () => {
                             href={`https://www.google.com/maps?q=${waterfall.latitude},${waterfall.longitude}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-emerald-600 hover:underline"
+                            className="hover:text-emerald-600 hover:underline"
                           >
                             {`${waterfall.latitude}, ${waterfall.longitude}`}
                           </a>

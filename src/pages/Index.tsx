@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import FeaturedWaterfalls from '@/components/FeaturedWaterfalls';
-import CountryBrowser from '@/components/CountryBrowser';
+import StateBrowser from '@/components/StateBrowser';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <FeaturedWaterfalls />
-      <CountryBrowser />
+      <StateBrowser />
       <Footer />
     </div>
   );

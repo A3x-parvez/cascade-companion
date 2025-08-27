@@ -8,10 +8,10 @@ const socialLinks = [
 ];
 
 const exploreLinks = [
-  { href: '/countries', title: 'Waterfalls by State' },
+  { href: '/state', title: 'Waterfalls by State' },
   { href: '/Recently_add', title: 'Recently Added' },
   { href: '/blog', title: 'Blog' },
-  { href: '/books', title: 'Materials' },
+  { href: '/materials', title: 'Materials' },
 ];
 
 const resourceLinks = [

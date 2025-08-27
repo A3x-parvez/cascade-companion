@@ -97,12 +97,12 @@ const Help = () => {
                 </AccordionItem>
 
                 <AccordionItem value="item-6">
-                  <AccordionTrigger className="text-black">Are the books listed available for purchase?</AccordionTrigger>
+                  <AccordionTrigger className="text-black">Are the materials listed available for purchase?</AccordionTrigger>
                   <AccordionContent className="text-gray-700">
-                    Our Books section showcases publications related to waterfalls, including
-                    field guides, photography books, and scientific studies. While we provide
-                    information about these books, you'll need to check with publishers or
-                    bookstores for availability and purchasing options.
+                    Our Materials section showcases publications related to waterfalls, including
+                    field guides, photography materials, and scientific studies. While we provide
+                    information about these materials, you'll need to check with publishers or
+                    stores for availability and purchasing options.
                   </AccordionContent>
                 </AccordionItem>
 
