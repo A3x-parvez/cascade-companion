@@ -18,7 +18,7 @@ const exploreLinks = [
 const resourceLinks = [
   { href: '/about', title: 'About Us' },
   { href: '/contact', title: 'Contact' },
-  { href: '/aboutUs#privacy', title: 'Privacy Policy' },
+  { href: '/about#privacy', title: 'Privacy Policy' },
 ];
 
 const Footer = () => {
