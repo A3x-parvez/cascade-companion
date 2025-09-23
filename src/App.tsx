@@ -42,7 +42,7 @@ const App = () => {
           error
         );
         // If the API is completely down, show the maintenance page as a fallback
-        setIsMaintenanceMode(false);
+        setIsMaintenanceMode(true);
       } finally {
         setIsLoading(false);
       }
