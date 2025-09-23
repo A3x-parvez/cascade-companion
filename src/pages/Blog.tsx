@@ -109,7 +109,7 @@ const Blog = () => {
                     <img
                       src={mediaUrl}
                       alt={post.title}
-                      className="w-full min-h-[400px] max-h-[400px] object-contain rounded-lg mb-4 bg-black"
+                      className="w-full min-h-[200px] max-h-[200px] md:min-h-[400px] md:max-h-[400px] object-contain rounded-lg mb-4 bg-black"
                     />
                   )}
 
@@ -118,11 +118,12 @@ const Blog = () => {
                     <div className="w-full bg-black rounded-lg mb-4 flex justify-center items-center">
                       <video
                         src={mediaUrl}
-                        className="w-full min-h-[400px] max-h-[400px] object-contain rounded-lg"
+                        className="w-full min-h-[200px] max-h-[200px] md:min-h-[400px] md:max-h-[400px] object-contain rounded-lg"
                         controls
                       />
                     </div>
                   )}
+
 
                   <h2 className="text-2xl font-bold text-gray-900 mb-3">
                     {post.title}

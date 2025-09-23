@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import profile_pic from "@/assets/rijwanool_profile.jpg"; 
-import { Shield, Users, Target, BookOpen } from 'lucide-react';
+import { Shield, Users, Target, BookOpen, List } from 'lucide-react';
 
 const About = () => {
   return (
