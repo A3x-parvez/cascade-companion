@@ -40,43 +40,43 @@ const featuredWaterfalls = [
     type: 'Horseshoe',
     image_url: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
     description: 'Also known as the "Niagara of India", this wide horseshoe-shaped waterfall is on the Indravati River.'
-  },
-  {
-    id: '5',
-    name: 'Dudhsagar Falls',
-    country: 'India (Goa)',
-    height_meters: 310,
-    type: 'Tiered',
-    image_url: 'https://images.pexels.com/photos/14655171/pexels-photo-14655171.jpeg',
-    description: 'Famous for its milky white appearance, Dudhsagar Falls cascades down the Western Ghats along the Goa-Karnataka border.'
-  },
-  {
-    id: '6',
-    name: 'Jog Falls',
-    country: 'India (Karnataka)',
-    height_meters: 253,
-    type: 'Segmented',
-    image_url: 'https://images.pexels.com/photos/949194/pexels-photo-949194.jpeg',
-    description: 'Among the highest waterfalls in India, Jog Falls is formed by the Sharavathi River and drops in four distinct segments.'
-  },
-  {
-    id: '7',
-    name: 'Athirappilly Falls',
-    country: 'India (Kerala)',
-    height_meters: 80,
-    type: 'Block',
-    image_url: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
-    description: 'Often called the "Niagara of South India", Athirappilly Falls is Kerala’s largest waterfall, surrounded by lush rainforests.'
-  },
-  {
-    id: '8',
-    name: 'Bhimlat Falls',
-    country: 'India (Rajasthan)',
-    height_meters: 60,
-    type: 'Plunge',
-    image_url: 'https://images.pexels.com/photos/356831/pexels-photo-356831.jpeg',
-    description: 'Located in the desert state of Rajasthan, Bhimlat Falls is a striking plunge waterfall that creates an oasis-like scene during monsoon.'
   }
+  // {
+  //   id: '5',
+  //   name: 'Dudhsagar Falls',
+  //   country: 'India (Goa)',
+  //   height_meters: 310,
+  //   type: 'Tiered',
+  //   image_url: 'https://images.pexels.com/photos/14655171/pexels-photo-14655171.jpeg',
+  //   description: 'Famous for its milky white appearance, Dudhsagar Falls cascades down the Western Ghats along the Goa-Karnataka border.'
+  // },
+  // {
+  //   id: '6',
+  //   name: 'Jog Falls',
+  //   country: 'India (Karnataka)',
+  //   height_meters: 253,
+  //   type: 'Segmented',
+  //   image_url: 'https://images.pexels.com/photos/949194/pexels-photo-949194.jpeg',
+  //   description: 'Among the highest waterfalls in India, Jog Falls is formed by the Sharavathi River and drops in four distinct segments.'
+  // },
+  // {
+  //   id: '7',
+  //   name: 'Athirappilly Falls',
+  //   country: 'India (Kerala)',
+  //   height_meters: 80,
+  //   type: 'Block',
+  //   image_url: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
+  //   description: 'Often called the "Niagara of South India", Athirappilly Falls is Kerala’s largest waterfall, surrounded by lush rainforests.'
+  // },
+  // {
+  //   id: '8',
+  //   name: 'Bhimlat Falls',
+  //   country: 'India (Rajasthan)',
+  //   height_meters: 60,
+  //   type: 'Plunge',
+  //   image_url: 'https://images.pexels.com/photos/356831/pexels-photo-356831.jpeg',
+  //   description: 'Located in the desert state of Rajasthan, Bhimlat Falls is a striking plunge waterfall that creates an oasis-like scene during monsoon.'
+  // }
 
 ];
 const FeaturedWaterfalls = () => {

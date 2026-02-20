@@ -1,11 +1,29 @@
 import React, { useState } from 'react';
-import { Waves, Github, Twitter, Mail } from 'lucide-react';
+import { Waves } from 'lucide-react';
+import { Github, Twitter, Mail, Linkedin, ExternalLink } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 const socialLinks = [
-  { href: '#', icon: Github, label: 'GitHub' },
-  { href: '#', icon: Twitter, label: 'Twitter' },
-  { href: '#', icon: Mail, label: 'Email' },
+  {
+    href: "#",
+    icon: Github,
+    label: "GitHub",
+  },
+  {
+    href: "mailto:arup.geo10@gmail.com",
+    icon: Mail,
+    label: "Email",
+  },
+  {
+    href: "https://www.linkedin.com/in/arup-kumar-roy-3067a8309",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://orcid.org/0000-0002-8249-0669",
+    icon: ExternalLink,
+    label: "ORCID",
+  },
 ];
 
 const exploreLinks = [

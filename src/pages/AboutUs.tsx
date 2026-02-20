@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import profile_pic from "@/assets/rijwanool_profile.jpg"; 
+import profile_pic from "@/assets/arup_roy.jpeg"; 
 import { Shield, Users, Target, BookOpen, List } from 'lucide-react';
 
 const About = () => {
@@ -32,49 +32,144 @@ const About = () => {
             </div>
             <div className="text-center md:text-left">
               <h2 className="text-2xl font-bold text-black mb-2">
-                Arup Roy
+                ARUP KUMAR ROY
               </h2>
               <p className="text-gray-600 mb-4">
                 Founder & Researcher
               </p>
               <p className="text-gray-700 leading-relaxed">
-                I am a Geography PhD student and teacher, and this project grew out of my
-                doctoral research on hidden waterfalls in India. The data and insights shared
-                here were collected during my fieldwork, with the goal of showcasing these
-                natural treasures to a wider audience. This is a personal, non-commercial
-                initiative driven by my passion for geography and love of nature.
+                I am a geomorphology researcher specializing in waterfalls, fluvial processes, and plateau landscapes, with a strong focus on the Chotanagpur Plateau of India. My work integrates field observations, GIS, and geological analysis to understand waterfalls as dynamic landforms and geoheritage features, aiming to document, classify, and conserve these scientifically important yet underrepresented landscapes.
               </p>
             </div>
           </div>
 
-          {/* Mission / Vision / Values */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+       {/* Mission / Vision / Values */}
+          <div className="grid grid-cols-1 gap-8 mb-16">
+
+            {/* Mission */}
+            <div className="bg-white rounded-xl shadow p-8 border border-gray-200">
               <Target className="w-10 h-10 text-emerald-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-black mb-2">My Mission</h3>
-              <p className="text-gray-600 text-sm">
-                To explore and document hidden waterfalls across India, preserving their
-                beauty through photography, stories, and research for anyone who shares a
-                love for nature.
+              <h3 className="font-bold text-lg text-black text-center mb-4">
+                My Mission
+              </h3>
+
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                To systematically collect, organize, analyze, and disseminate multidisciplinary information on waterfalls using geomorphological, geological, hydrological, and spatial perspectives.
               </p>
+
+              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                Through this platform, the mission is to:
+              </p>
+
+              <ol className="text-gray-600 text-sm leading-relaxed space-y-3 list-decimal pl-5">
+                <li>
+                  Develop a standardized waterfall database integrating location, morphology, lithology, drainage context, and evolutionary history
+                </li>
+                <li>
+                  Support research, education, and conservation by providing reliable spatial and scientific data
+                </li>
+                <li>
+                  Bridge the gap between academic research and public understanding of waterfalls
+                </li>
+                <li>
+                  Promote regional and underrepresented waterfall landscapes (e.g., plateau regions, shield areas, granite–gneiss terrains) at national and international levels
+                </li>
+                <li>
+                  Encourage sustainable geotourism and geoheritage awareness based on scientific understanding
+                </li>
+              </ol>
             </div>
-            <div className="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+
+            {/* Vision */}
+            <div className="bg-white rounded-xl shadow p-8 border border-gray-200">
               <Users className="w-10 h-10 text-emerald-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-black mb-2">My Vision</h3>
-              <p className="text-gray-600 text-sm">
-                To inspire others to appreciate lesser-known natural wonders, encourage
-                responsible travel, and highlight the importance of conservation of these
-                hidden gems.
-              </p>
+              <h3 className="font-bold text-lg text-black text-center mb-4">
+                My Vision
+              </h3>
+
+              <ol className="text-gray-600 text-sm leading-relaxed space-y-3 list-decimal pl-5">
+                <li>
+                  To build a comprehensive, scientifically credible, and globally accessible 
+                  digital platform that documents waterfalls as dynamic geomorphic features, 
+                  natural heritage assets, and indicators of landscape evolution.
+                </li>
+                <li>
+                  This vision recognizes waterfalls not merely as scenic attractions, but as 
+                  outcomes of long-term interactions among geology, tectonics, climate, and 
+                  fluvial processes deserving systematic documentation and international recognition.
+                </li>
+              </ol>
             </div>
-            <div className="bg-white rounded-xl shadow p-6 text-center border border-gray-200">
+
+            {/* Values */}
+            <div className="bg-white rounded-xl shadow p-8 border border-gray-200">
               <BookOpen className="w-10 h-10 text-emerald-600 mx-auto mb-4" />
-              <h3 className="font-bold text-lg text-black mb-2">My Values</h3>
-              <p className="text-gray-600 text-sm">
-                Curiosity, respect for nature, and a commitment to sharing knowledge
-                openly without commercial intent guide every step of this project.
-              </p>
+              <h3 className="font-bold text-lg text-black text-center mb-4">
+                My Values
+              </h3>
+
+              <ol className="text-gray-600 text-sm leading-relaxed space-y-4 list-decimal pl-5">
+
+                <li>
+                  <span className="font-semibold text-black">Scientific Integrity</span>
+                  <p className="mt-1">
+                    All data and interpretations are grounded in established geomorphological 
+                    and geological principles, supported by peer-reviewed research, field 
+                    evidence, and spatial analysis.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Interdisciplinary Approach</span>
+                  <p className="mt-1">
+                    The platform integrates geomorphology, hydrology, geology, GIS, ecology, 
+                    and environmental history to present waterfalls as complex Earth system features.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Documentation & Preservation</span>
+                  <p className="mt-1">
+                    Waterfalls are treated as geoheritage resources, emphasizing the importance 
+                    of documentation for conservation, land-use planning, and environmental change assessment.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Accessibility & Education</span>
+                  <p className="mt-1">
+                    Information is presented in a way that is accessible to researchers and students, 
+                    educators, policy planners, nature enthusiasts, and responsible tourists.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Regional Representation</span>
+                  <p className="mt-1">
+                    Special emphasis is placed on less-documented regions and landscapes, ensuring 
+                    balanced global and national representation beyond well-known tourist waterfalls.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Sustainability & Ethics</span>
+                  <p className="mt-1">
+                    The platform promotes awareness of environmental sensitivity, discouraging 
+                    unsustainable exploitation and encouraging responsible interaction with natural waterfall systems.
+                  </p>
+                </li>
+
+                <li>
+                  <span className="font-semibold text-black">Open Knowledge & Collaboration</span>
+                  <p className="mt-1">
+                    The database encourages data sharing, academic collaboration, and future 
+                    expansion through verified contributions from researchers and institutions.
+                  </p>
+                </li>
+
+              </ol>
             </div>
+
           </div>
 
 

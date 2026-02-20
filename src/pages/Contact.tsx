@@ -30,7 +30,7 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-emerald-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-1">Email</h3>
-              <p className="text-gray-600 text-sm">roy.arup9891@gmail.com</p>
+              <p className="text-gray-600 text-sm">arup.geo10@gmail.com</p>
             </div>
 
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md border border-white/20 hover:shadow-lg transition-all group text-center">
@@ -38,7 +38,7 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-emerald-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-1">Phone</h3>
-              <p className="text-gray-600 text-sm">+1 (555) 123-FALL</p>
+              <p className="text-gray-600 text-sm">+91 9732173670</p>
             </div>
 
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 shadow-md border border-white/20 hover:shadow-lg transition-all group text-center">
@@ -47,8 +47,8 @@ const Contact = () => {
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-1">Location</h3>
               <p className="text-gray-600 text-sm">
-                123 Nature Trail<br />
-                Waterfall Valley, WV 12345<br />
+                Tarapith Road Station<br />
+                Birbhum<br />
                 West Bengal, India
               </p>
             </div>
