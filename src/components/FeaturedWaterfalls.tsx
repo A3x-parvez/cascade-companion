@@ -3,6 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Compass } from 'lucide-react';
 import WaterfallCard from './WaterfallCard';
 import { useNavigate } from 'react-router-dom';
+
+import waterfall_a from '@/assets/waterfall_a.jpeg';
+import waterfall_b from '@/assets/waterfall_b.jpeg';
+import waterfall_c from '@/assets/waterfall_c.jpeg';
+import waterfall_d from '@/assets/waterfall_d.jpeg';
 // Sample data - this would come from Supabase in the full implementation
 const featuredWaterfalls = [
   {
@@ -11,7 +16,7 @@ const featuredWaterfalls = [
     country: 'India (Karnataka)',
     height_meters: 253,
     type: 'Segmented',
-    image_url: 'src\\assets\\waterfall_a.jpeg',
+    image_url: waterfall_a,
     description: 'One of the highest waterfalls in India, formed by the Sharavathi River, plunging in four distinct cascades.'
   },
   {
@@ -20,7 +25,7 @@ const featuredWaterfalls = [
     country: 'India (Kerala)',
     height_meters: 80,
     type: 'Block',
-    image_url: 'src\\assets\\waterfall_b.jpeg',
+    image_url: waterfall_b,
     description: 'Often called the "Niagara of India", this waterfall on the Chalakudy River is surrounded by lush green forests.'
   },
   {
@@ -29,7 +34,7 @@ const featuredWaterfalls = [
     country: 'India (Meghalaya)',
     height_meters: 340,
     type: 'Plunge',
-    image_url: 'src\\assets\\waterfall_c.jpeg',
+    image_url: waterfall_c,
     description: 'The tallest plunge waterfall in India, dropping into a turquoise pool near Cherrapunji.'
   },
   {
@@ -38,7 +43,7 @@ const featuredWaterfalls = [
     country: 'India (Chhattisgarh)',
     height_meters: 29,
     type: 'Horseshoe',
-    image_url: 'src\\assets\\waterfall_d.jpeg',
+    image_url: waterfall_d,
     description: 'Also known as the "Niagara of India", this wide horseshoe-shaped waterfall is on the Indravati River.'
   }
   // {
