@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const socialLinks = [
   {
-    href: "#",
+    href: "https://github.com/aruproy12phd-oss",
     icon: Github,
     label: "GitHub",
   },
@@ -120,13 +120,18 @@ const Footer = () => {
 
         {/* Hidden Easter Egg Trigger */}
         <div className="mt-6 pt-4 text-center text-gray-500 text-sm border-t border-gray-200">
+        <div>
           <span
             onClick={handleSecretClick}
             className="cursor-pointer select-none"
           >
-            © 2025
-          </span>{" "}
-          India Waterfall Database. All Rights Reserved.
+            Built with ❤️ by Wtero
+          </span>
+        </div>
+
+        <div className="mt-1">
+          ©2026 - India Waterfall Database. All Rights Reserved.
+        </div>
       </div>
      </div>
     </footer>
