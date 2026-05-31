@@ -125,7 +125,7 @@ const Footer = () => {
             onClick={handleSecretClick}
             className="cursor-pointer select-none"
           >
-            Built with ❤️ by Wtero
+            Built by Wtero
           </span>
         </div>
 
