@@ -1,73 +1,83 @@
-# Welcome to your Lovable project
+# India Waterfalls Database Frontend
 
-## Project info
+Lightweight Vite + React + TypeScript starter using shadcn-style components and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/5273f3b4-1f5d-4a4a-a09c-527de71cbbc8
+**Overview**
 
-## How can I edit this code?
+This repository contains a UI-focused application for browsing and presenting waterfall data. It ships with a collection of small, reusable components under `src/components/` and example pages under `src/pages/`.
 
-There are several ways of editing your application.
+**Status**: Active development. No external service-specific references remain in this README.
 
-**Use Lovable**
+## Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5273f3b4-1f5d-4a4a-a09c-527de71cbbc8) and start prompting.
+- Node.js 18+ (LTS recommended)
+- npm (or an alternative package manager: pnpm, bun)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Quickstart
 
-**Use your preferred IDE**
+1. Install dependencies:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+npm install
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Run the dev server:
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+3. Open the app at the address printed by Vite (typically `http://localhost:8080`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+4. Build for production:
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+5. Preview the production build locally:
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with:
+## Available scripts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `dev` — Run Vite dev server
+- `build` — Build production assets
+- `build:dev` — Build in development mode
+- `preview` — Preview production build
+- `lint` — Run ESLint
 
-## How can I deploy this project?
+## Project structure
 
-Simply open [Lovable](https://lovable.dev/projects/5273f3b4-1f5d-4a4a-a09c-527de71cbbc8) and click on Share -> Publish.
+- `src/` — application source
+	- `main.tsx` — entry point
+	- `App.tsx` — root app component
+	- `components/` — UI components and `ui/` primitives
+	- `data/` — example datasets (e.g., `waterfallData.ts`)
+	- `pages/` — route pages
+- `public/` — static assets
+- `vite.config.ts`, `tsconfig.json`, `tailwind.config.ts` — config and tooling
 
-## Can I connect a custom domain to my Lovable project?
+## Notes on cleanup
 
-Yes, you can!
+I removed references to the external scaffolding service from the README and removed the external devDependency from `package.json`. To fully clean local state, delete `node_modules` and regenerate the lockfile by running `npm install`.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Contributing
+
+- Fork or branch, make focused changes, and open a Pull Request.
+- Run `npm run lint` and ensure basic functionality before submitting.
+
+## License
+
+Add a `LICENSE` file to indicate the desired license for this project.
+
+---
+
+If you want, I can also remove the existing `package-lock.json` entries referencing removed packages so your next `npm install` produces a clean lockfile.
