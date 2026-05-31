@@ -11,7 +11,7 @@ const featuredWaterfalls = [
     country: 'India (Karnataka)',
     height_meters: 253,
     type: 'Segmented',
-    image_url: 'https://images.pexels.com/photos/949194/pexels-photo-949194.jpeg',
+    image_url: 'src\\assets\\waterfall_a.jpeg',
     description: 'One of the highest waterfalls in India, formed by the Sharavathi River, plunging in four distinct cascades.'
   },
   {
@@ -20,7 +20,7 @@ const featuredWaterfalls = [
     country: 'India (Kerala)',
     height_meters: 80,
     type: 'Block',
-    image_url: 'https://images.pexels.com/photos/327394/pexels-photo-327394.jpeg',
+    image_url: 'src\\assets\\waterfall_b.jpeg',
     description: 'Often called the "Niagara of India", this waterfall on the Chalakudy River is surrounded by lush green forests.'
   },
   {
@@ -29,7 +29,7 @@ const featuredWaterfalls = [
     country: 'India (Meghalaya)',
     height_meters: 340,
     type: 'Plunge',
-    image_url: 'https://images.pexels.com/photos/356831/pexels-photo-356831.jpeg',
+    image_url: 'src\\assets\\waterfall_c.jpeg',
     description: 'The tallest plunge waterfall in India, dropping into a turquoise pool near Cherrapunji.'
   },
   {
@@ -38,7 +38,7 @@ const featuredWaterfalls = [
     country: 'India (Chhattisgarh)',
     height_meters: 29,
     type: 'Horseshoe',
-    image_url: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
+    image_url: 'src\\assets\\waterfall_d.jpeg',
     description: 'Also known as the "Niagara of India", this wide horseshoe-shaped waterfall is on the Indravati River.'
   }
   // {
